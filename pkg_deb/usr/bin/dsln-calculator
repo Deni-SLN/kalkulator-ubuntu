@@ -10,9 +10,10 @@ from gi.repository import Gtk, WebKit2, Gio, GLib
 def main():
     # Detect asset paths
     base_dirs = [
-        "/usr/share/dsln-calculator",
-        os.path.expanduser("~/.local/share/dsln-calculator"),
         os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "dist"),
+        os.path.expanduser("~/.local/share/dsln-calculator/dist"),
+        os.path.expanduser("~/.local/share/dsln-calculator"),
+        "/usr/share/dsln-calculator",
     ]
 
     html_path = None

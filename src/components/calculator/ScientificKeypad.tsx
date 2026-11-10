@@ -198,7 +198,7 @@ export const ScientificKeypad: React.FC = () => {
 
         {/* Row 7 */}
         <button onClick={backspace} className={fnBtnClass} title="Hapus Terakhir (Backspace)">
-          <Delete className="w-4 h-4" />
+          <Delete className="w-4 h-4 text-[var(--btn-op-text)]" />
         </button>
         <button onClick={negate} className={opBtnClass} title="Positif/Negatif (+/-)">
           +/-

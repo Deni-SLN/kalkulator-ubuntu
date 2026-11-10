@@ -42,7 +42,7 @@ export const StandardKeypad: React.FC = () => {
         C
       </button>
       <button onClick={backspace} className={opBtnClass} title="Hapus Terakhir (Backspace)">
-        <Delete className="w-5 h-5" />
+        <Delete className="w-5 h-5 text-[var(--btn-op-text)]" />
       </button>
 
       {/* Row 1 */}

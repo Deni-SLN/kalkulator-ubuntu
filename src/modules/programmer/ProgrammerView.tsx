@@ -267,7 +267,7 @@ export const ProgrammerView: React.FC = () => {
           C
         </button>
         <button onClick={handleBackspace} className={opBtnClass} title="Hapus Terakhir (Backspace)">
-          <Delete className="w-4 h-4" />
+          <Delete className="w-4 h-4 text-[var(--btn-op-text)]" />
         </button>
 
         {/* Row 3: C, D, 7, 8, 9, ( */}
