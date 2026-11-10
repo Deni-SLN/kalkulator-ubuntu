@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "DSLN Calculator",
+  "version": "1.0.0",
+  "identifier": "com.dsln.calculator",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "DSLN Calculator",
+        "width": 420,
+        "height": 620,
+        "minWidth": 360,
+        "minHeight": 500,
+        "resizable": true,
+        "decorations": false,
+        "transparent": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["deb", "appimage"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "category": "Utility",
+    "shortDescription": "Modern Desktop Calculator for Ubuntu Linux",
+    "longDescription": "DSLN Calculator is a modern, lightweight desktop calculator for Ubuntu Linux with Fluent Design, standard & scientific modes, and local history persistence."
+  }
+}
