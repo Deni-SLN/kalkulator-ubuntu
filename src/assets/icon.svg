@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="dslnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="50%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Background rounded rect -->
+  <rect x="16" y="16" width="224" height="224" rx="48" fill="url(#dslnGrad)" filter="url(#shadow)" />
+
+  <!-- Inner subtle border -->
+  <rect x="17" y="17" width="222" height="222" rx="47" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="2" />
+
+  <!-- Calculation Symbols Grid -->
+  <!-- Plus (+) -->
+  <path d="M 60 76 L 92 76 M 76 60 L 76 92" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" />
+
+  <!-- Minus (−) -->
+  <path d="M 164 76 L 196 76" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" />
+
+  <!-- Multiply (×) -->
+  <path d="M 65 145 L 87 167 M 87 145 L 65 167" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" />
+
+  <!-- Equals (=) -->
+  <path d="M 164 150 L 196 150 M 164 162 L 196 162" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" />
+
+  <!-- Central DSLN Logo text -->
+  <text x="128" y="212" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">DSLN</text>
+</svg>

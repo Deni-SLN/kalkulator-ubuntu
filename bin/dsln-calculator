@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+import os
+import sys
+import gi
+
+gi.require_version('Gtk', '3.0')
+gi.require_version('WebKit2', '4.1')
+from gi.repository import Gtk, WebKit2, Gio, GLib
+
+def main():
+    # Detect asset paths
+    base_dirs = [
+        "/usr/share/dsln-calculator",
+        os.path.expanduser("~/.local/share/dsln-calculator"),
+        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "dist"),
+    ]
+
+    html_path = None
+    icon_path = None
+
+    for d in base_dirs:
+        candidate_html = os.path.join(d, "index.html")
+        if os.path.isfile(candidate_html):
+            html_path = candidate_html
+            break
+
+    icon_candidates = [
+        "/usr/share/icons/hicolor/scalable/apps/dsln-calculator.svg",
+        os.path.expanduser("~/.local/share/icons/hicolor/scalable/apps/dsln-calculator.svg"),
+        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src/assets/icon.svg"),
+    ]
+    for ic in icon_candidates:
+        if os.path.isfile(ic):
+            icon_path = ic
+            break
+
+    if not html_path:
+        print("Error: Could not locate DSLN Calculator dist/index.html", file=sys.stderr)
+        sys.exit(1)
+
+    # Initialize Window
+    win = Gtk.Window(title="DSLN Calculator")
+    win.set_default_size(420, 620)
+    win.set_size_request(360, 500)
+    win.set_position(Gtk.WindowPosition.CENTER)
+
+    if icon_path:
+        try:
+            win.set_icon_from_file(icon_path)
+        except Exception:
+            pass
+
+    # Setup WebKit WebView & Settings
+    settings = WebKit2.Settings()
+    settings.set_enable_javascript(True)
+    settings.set_enable_webgl(True)
+    settings.set_allow_file_access_from_file_urls(True)
+    settings.set_allow_universal_access_from_file_urls(True)
+    settings.set_enable_developer_extras(False)
+
+    webview = WebKit2.WebView.new_with_settings(settings)
+    win.add(webview)
+
+    # Load file URI
+    uri = "file://" + os.path.abspath(html_path)
+    webview.load_uri(uri)
+
+    win.connect("destroy", Gtk.main_quit)
+    win.show_all()
+    Gtk.main()
+
+if __name__ == "__main__":
+    main()

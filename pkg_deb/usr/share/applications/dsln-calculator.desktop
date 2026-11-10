@@ -1,0 +1,32 @@
+[Desktop Entry]
+Name=DSLN Calculator
+GenericName=Calculator
+Comment=Modern Desktop Calculator for Ubuntu Linux
+Exec=/usr/bin/dsln-calculator
+Icon=dsln-calculator
+Terminal=false
+Type=Application
+Categories=Utility;Calculator;Office;
+Keywords=calculator;kalkulator;scientific;financial;converter;programmer;
+StartupWMClass=dsln-calculator
+Actions=Standard;Scientific;Programmer;Financial;Converter;
+
+[Desktop Action Standard]
+Name=Standar
+Exec=/usr/bin/dsln-calculator
+
+[Desktop Action Scientific]
+Name=Ilmiah
+Exec=/usr/bin/dsln-calculator
+
+[Desktop Action Programmer]
+Name=Pemrogram
+Exec=/usr/bin/dsln-calculator
+
+[Desktop Action Financial]
+Name=Finansial
+Exec=/usr/bin/dsln-calculator
+
+[Desktop Action Converter]
+Name=Konverter
+Exec=/usr/bin/dsln-calculator
