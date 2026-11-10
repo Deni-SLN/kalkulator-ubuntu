@@ -73,21 +73,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Slide-out Drawer */}
       <aside
-        className={`fixed top-0 left-0 bottom-0 w-64 bg-[#1e2129]/95 backdrop-blur-xl border-r border-white/10 z-50 flex flex-col justify-between transform transition-transform duration-200 ease-in-out shadow-fluent-elevated ${
+        className={`fixed top-0 left-0 bottom-0 w-64 bg-[var(--panel-bg)] backdrop-blur-xl border-r border-[var(--panel-border)] z-50 flex flex-col justify-between transform transition-transform duration-200 ease-in-out shadow-[var(--panel-shadow)] text-[var(--text-primary)] ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="p-3">
-          <div className="flex items-center justify-between pb-3 mb-2 border-b border-white/10">
+          <div className="flex items-center justify-between pb-3 mb-2 border-b border-[var(--border-subtle)]">
             <div className="flex items-center space-x-2">
               <div className="w-6 h-6 rounded bg-dsln-accent flex items-center justify-center font-bold text-xs text-white">
                 D
               </div>
-              <span className="font-semibold text-sm tracking-wide text-white">DSLN Calculator</span>
+              <span className="font-semibold text-sm tracking-wide text-[var(--text-primary)]">DSLN Calculator</span>
             </div>
             <button
               onClick={onClose}
-              className="p-1 rounded hover:bg-white/10 text-white/70 hover:text-white"
+              className="p-1 rounded hover:bg-[var(--header-btn-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             >
               <X className="w-4 h-4" />
             </button>
@@ -97,7 +97,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <div className="space-y-4">
             {navItems.map((group) => (
               <div key={group.category}>
-                <div className="px-2 mb-1 text-[11px] font-semibold text-white/40 tracking-wider">
+                <div className="px-2 mb-1 text-[11px] font-semibold text-[var(--text-muted)] tracking-wider">
                   {group.category}
                 </div>
                 <div className="space-y-0.5">
@@ -111,10 +111,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         onClick={() => handleSelectMode(item.id)}
                         className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium transition-all ${
                           item.disabled
-                            ? 'opacity-40 cursor-not-allowed text-white/50'
+                            ? 'opacity-40 cursor-not-allowed text-[var(--text-muted)]'
                             : isActive
                             ? 'bg-dsln-accent text-white shadow-sm font-semibold'
-                            : 'text-white/80 hover:bg-white/10 hover:text-white'
+                            : 'text-[var(--text-secondary)] hover:bg-[var(--header-btn-hover)] hover:text-[var(--text-primary)]'
                         }`}
                       >
                         <div className="flex items-center space-x-2.5">
@@ -122,7 +122,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                           <span>{item.label}</span>
                         </div>
                         {item.tag && (
-                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-white/60">
+                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)]">
                             {item.tag}
                           </span>
                         )}
@@ -134,7 +134,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             ))}
 
             <div>
-              <div className="px-2 mb-1 text-[11px] font-semibold text-white/40 tracking-wider">
+              <div className="px-2 mb-1 text-[11px] font-semibold text-[var(--text-muted)] tracking-wider">
                 RIWAYAT
               </div>
               <button
@@ -142,7 +142,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   setHistoryOpen(true);
                   onClose();
                 }}
-                className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-md text-xs font-medium text-white/80 hover:bg-white/10 hover:text-white transition-all"
+                className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-md text-xs font-medium text-[var(--text-secondary)] hover:bg-[var(--header-btn-hover)] hover:text-[var(--text-primary)] transition-all"
               >
                 <History className="w-4 h-4" />
                 <span>Log Riwayat</span>
@@ -152,13 +152,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
 
         {/* Bottom Drawer Actions */}
-        <div className="p-3 border-t border-white/10 space-y-1">
+        <div className="p-3 border-t border-[var(--border-subtle)] space-y-1">
           <button
             onClick={() => {
               onOpenSettings();
               onClose();
             }}
-            className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-md text-xs font-medium text-white/80 hover:bg-white/10 hover:text-white transition-all"
+            className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-md text-xs font-medium text-[var(--text-secondary)] hover:bg-[var(--header-btn-hover)] hover:text-[var(--text-primary)] transition-all"
           >
             <Settings className="w-4 h-4" />
             <span>Pengaturan</span>
@@ -168,7 +168,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               onOpenAbout();
               onClose();
             }}
-            className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-md text-xs font-medium text-white/80 hover:bg-white/10 hover:text-white transition-all"
+            className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-md text-xs font-medium text-[var(--text-secondary)] hover:bg-[var(--header-btn-hover)] hover:text-[var(--text-primary)] transition-all"
           >
             <Info className="w-4 h-4" />
             <span>Tentang DSLN</span>

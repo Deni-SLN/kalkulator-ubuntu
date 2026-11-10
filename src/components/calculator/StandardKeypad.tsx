@@ -21,10 +21,10 @@ export const StandardKeypad: React.FC = () => {
   const decimalSeparator = settings.numberFormat === 'id-ID' ? ',' : '.';
 
   const numBtnClass =
-    'h-12 rounded-lg bg-white/[0.06] hover:bg-white/[0.12] active:bg-white/[0.18] text-white font-medium text-lg transition-all shadow-sm flex items-center justify-center border border-white/5 active:scale-[0.98]';
+    'h-12 rounded-lg bg-[var(--btn-num-bg)] hover:bg-[var(--btn-num-hover)] active:bg-[var(--btn-num-active)] text-[var(--btn-num-text)] font-semibold text-lg transition-all shadow-[var(--btn-num-shadow)] flex items-center justify-center border border-[var(--border-subtle)] active:scale-[0.98]';
 
   const opBtnClass =
-    'h-12 rounded-lg bg-white/[0.03] hover:bg-white/[0.08] active:bg-white/[0.14] text-white/90 font-medium text-base transition-all flex items-center justify-center border border-white/5 active:scale-[0.98]';
+    'h-12 rounded-lg bg-[var(--btn-op-bg)] hover:bg-[var(--btn-op-hover)] active:bg-[var(--btn-op-active)] text-[var(--btn-op-text)] font-medium text-base transition-all flex items-center justify-center border border-[var(--border-subtle)] active:scale-[0.98]';
 
   const accentBtnClass =
     'h-12 rounded-lg bg-dsln-accent hover:opacity-90 active:opacity-100 text-white font-semibold text-xl transition-all shadow-md flex items-center justify-center active:scale-[0.98]';
@@ -42,7 +42,7 @@ export const StandardKeypad: React.FC = () => {
         C
       </button>
       <button onClick={backspace} className={opBtnClass} title="Hapus Terakhir (Backspace)">
-        <Delete className="w-5 h-5 text-white/80" />
+        <Delete className="w-5 h-5" />
       </button>
 
       {/* Row 1 */}

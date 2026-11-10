@@ -45,24 +45,24 @@ export const Display: React.FC = () => {
       <button
         onClick={handleCopy}
         title="Salin hasil (Ctrl+C)"
-        className="absolute top-2 left-4 p-1.5 rounded-md bg-white/5 hover:bg-white/15 opacity-0 group-hover:opacity-100 transition-all text-white/60 hover:text-white"
+        className="absolute top-2 left-4 p-1.5 rounded-md bg-[var(--header-btn-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] opacity-0 group-hover:opacity-100 transition-all shadow-sm"
       >
-        {copied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
+        {copied ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
       </button>
 
       {/* Expression history / secondary display */}
-      <div className="h-6 text-sm text-white/50 font-mono tracking-wide truncate">
+      <div className="h-6 text-sm text-[var(--text-secondary)] font-mono tracking-wide truncate">
         {formatExpression(expression, settings.numberFormat || 'id-ID')}
       </div>
 
       {/* Live preview line (if typing binary op) */}
-      <div className="h-5 text-xs text-dsln-accent/80 font-mono font-medium">
+      <div className="h-5 text-xs text-dsln-accent font-mono font-medium">
         {formattedPreview && !error ? `= ${formattedPreview}` : ''}
       </div>
 
       {/* Error Banner */}
       {error && (
-        <div className="flex items-center justify-end space-x-1.5 text-red-400 text-sm font-medium py-1 animate-pulse">
+        <div className="flex items-center justify-end space-x-1.5 text-red-500 text-sm font-medium py-1 animate-pulse">
           <AlertCircle className="w-4 h-4" />
           <span>
             {error === 'Cannot divide by zero'
@@ -78,7 +78,7 @@ export const Display: React.FC = () => {
 
       {/* Primary Display Number */}
       <div
-        className={`font-semibold tracking-tight text-white transition-all font-sans break-all select-all ${getFontSizeClass(
+        className={`font-semibold tracking-tight text-[var(--text-primary)] transition-all font-sans break-all select-all ${getFontSizeClass(
           formattedMainValue.length
         )}`}
       >

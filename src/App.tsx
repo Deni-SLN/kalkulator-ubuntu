@@ -45,7 +45,7 @@ export const App: React.FC = () => {
   }, [isLoaded, settings.defaultMode, settings.angleMode, setMode, setAngleMode]);
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#17191F] text-[#F5F7FA] font-sans antialiased relative">
+    <div className="flex flex-col h-screen w-screen overflow-hidden bg-[var(--bg-app)] text-[var(--text-primary)] font-sans antialiased relative transition-colors duration-200">
       {/* Header */}
       <Header
         onToggleSidebar={() => setIsSidebarOpen(true)}

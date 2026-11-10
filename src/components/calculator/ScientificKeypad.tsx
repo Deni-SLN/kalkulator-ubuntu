@@ -34,13 +34,13 @@ export const ScientificKeypad: React.FC = () => {
   };
 
   const fnBtnClass =
-    'h-10 rounded-md bg-white/[0.04] hover:bg-white/[0.1] active:bg-white/[0.16] text-white/90 font-medium text-xs sm:text-sm transition-all flex items-center justify-center border border-white/5 active:scale-[0.98]';
+    'h-10 rounded-md bg-[var(--btn-op-bg)] hover:bg-[var(--btn-op-hover)] active:bg-[var(--btn-op-active)] text-[var(--btn-op-text)] font-medium text-xs sm:text-sm transition-all flex items-center justify-center border border-[var(--border-subtle)] active:scale-[0.98]';
 
   const numBtnClass =
-    'h-10 rounded-md bg-white/[0.07] hover:bg-white/[0.14] active:bg-white/[0.2] text-white font-semibold text-base transition-all flex items-center justify-center border border-white/5 shadow-sm active:scale-[0.98]';
+    'h-10 rounded-md bg-[var(--btn-num-bg)] hover:bg-[var(--btn-num-hover)] active:bg-[var(--btn-num-active)] text-[var(--btn-num-text)] font-semibold text-base transition-all flex items-center justify-center border border-[var(--border-subtle)] shadow-[var(--btn-num-shadow)] active:scale-[0.98]';
 
   const opBtnClass =
-    'h-10 rounded-md bg-white/[0.04] hover:bg-white/[0.1] active:bg-white/[0.16] text-white/90 font-medium text-base transition-all flex items-center justify-center border border-white/5 active:scale-[0.98]';
+    'h-10 rounded-md bg-[var(--btn-op-bg)] hover:bg-[var(--btn-op-hover)] active:bg-[var(--btn-op-active)] text-[var(--btn-op-text)] font-medium text-base transition-all flex items-center justify-center border border-[var(--border-subtle)] active:scale-[0.98]';
 
   const accentBtnClass =
     'h-10 rounded-md bg-dsln-accent hover:opacity-90 active:opacity-100 text-white font-semibold text-lg transition-all shadow-md flex items-center justify-center active:scale-[0.98]';
@@ -51,15 +51,17 @@ export const ScientificKeypad: React.FC = () => {
       <div className="grid grid-cols-5 gap-1.5 pb-1">
         <button
           onClick={cycleAngleMode}
-          className="h-8 rounded bg-white/10 hover:bg-white/20 active:bg-white/25 text-white/90 text-xs font-semibold uppercase font-mono transition"
+          className="h-8 rounded bg-[var(--btn-op-bg)] hover:bg-[var(--btn-op-hover)] text-[var(--btn-op-text)] text-xs font-semibold uppercase font-mono transition border border-[var(--border-subtle)]"
           title="Ganti Mode Sudut: DEG / RAD / GRAD"
         >
           {angleMode}
         </button>
         <button
           onClick={toggleSecond}
-          className={`h-8 rounded text-xs font-semibold uppercase transition ${
-            isSecondActive ? 'bg-dsln-accent text-white' : 'bg-white/10 hover:bg-white/20 text-white/90'
+          className={`h-8 rounded text-xs font-semibold uppercase transition border border-[var(--border-subtle)] ${
+            isSecondActive
+              ? 'bg-dsln-accent text-white'
+              : 'bg-[var(--btn-op-bg)] hover:bg-[var(--btn-op-hover)] text-[var(--btn-op-text)]'
           }`}
           title="Beralih fungsi sekunder (2nd)"
         >
@@ -67,17 +69,25 @@ export const ScientificKeypad: React.FC = () => {
         </button>
         <button
           onClick={toggleHyp}
-          className={`h-8 rounded text-xs font-semibold uppercase transition ${
-            isHypActive ? 'bg-dsln-accent text-white' : 'bg-white/10 hover:bg-white/20 text-white/90'
+          className={`h-8 rounded text-xs font-semibold uppercase transition border border-[var(--border-subtle)] ${
+            isHypActive
+              ? 'bg-dsln-accent text-white'
+              : 'bg-[var(--btn-op-bg)] hover:bg-[var(--btn-op-hover)] text-[var(--btn-op-text)]'
           }`}
           title="Beralih fungsi hiperbolik (hyp)"
         >
           hyp
         </button>
-        <button onClick={clearEntry} className="h-8 rounded bg-white/10 hover:bg-white/20 text-xs font-semibold text-white/90">
+        <button
+          onClick={clearEntry}
+          className="h-8 rounded bg-[var(--btn-op-bg)] hover:bg-[var(--btn-op-hover)] text-xs font-semibold text-[var(--btn-op-text)] border border-[var(--border-subtle)]"
+        >
           CE
         </button>
-        <button onClick={clearAll} className="h-8 rounded bg-white/10 hover:bg-white/20 text-xs font-semibold text-white/90">
+        <button
+          onClick={clearAll}
+          className="h-8 rounded bg-[var(--btn-op-bg)] hover:bg-[var(--btn-op-hover)] text-xs font-semibold text-[var(--btn-op-text)] border border-[var(--border-subtle)]"
+        >
           C
         </button>
       </div>
@@ -188,7 +198,7 @@ export const ScientificKeypad: React.FC = () => {
 
         {/* Row 7 */}
         <button onClick={backspace} className={fnBtnClass} title="Hapus Terakhir (Backspace)">
-          <Delete className="w-4 h-4 text-white/80" />
+          <Delete className="w-4 h-4" />
         </button>
         <button onClick={negate} className={opBtnClass} title="Positif/Negatif (+/-)">
           +/-

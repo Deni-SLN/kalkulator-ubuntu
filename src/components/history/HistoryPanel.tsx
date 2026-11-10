@@ -64,13 +64,13 @@ export const HistoryPanel: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-y-0 right-0 w-80 bg-[#1a1d24]/95 backdrop-blur-xl border-l border-white/10 z-50 flex flex-col shadow-fluent-elevated">
+    <div className="fixed inset-y-0 right-0 w-80 bg-[var(--panel-bg)] backdrop-blur-xl border-l border-[var(--panel-border)] z-50 flex flex-col shadow-[var(--panel-shadow)] text-[var(--text-primary)]">
       {/* Header */}
-      <div className="p-3 border-b border-white/10 flex items-center justify-between">
+      <div className="p-3 border-b border-[var(--border-subtle)] flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Clock className="w-4 h-4 text-dsln-accent" />
-          <span className="font-semibold text-sm text-white">Riwayat</span>
-          <span className="text-xs px-1.5 py-0.5 rounded bg-white/10 text-white/60">
+          <span className="font-semibold text-sm text-[var(--text-primary)]">Riwayat</span>
+          <span className="text-xs px-1.5 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)]">
             {filteredItems.length}
           </span>
         </div>
@@ -78,7 +78,7 @@ export const HistoryPanel: React.FC = () => {
           <button
             onClick={() => setFilterFavorite(!filterFavorite)}
             className={`p-1.5 rounded transition ${
-              filterFavorite ? 'bg-amber-400/20 text-amber-400' : 'text-white/60 hover:text-white'
+              filterFavorite ? 'bg-amber-400/20 text-amber-500' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--header-btn-hover)]'
             }`}
             title="Saring Favorit"
           >
@@ -87,7 +87,7 @@ export const HistoryPanel: React.FC = () => {
           {items.length > 0 && (
             <button
               onClick={clearHistory}
-              className="p-1.5 rounded hover:bg-red-500/20 text-white/60 hover:text-red-400 transition"
+              className="p-1.5 rounded hover:bg-red-500/20 text-[var(--text-secondary)] hover:text-red-500 transition"
               title="Bersihkan semua riwayat"
             >
               <Trash2 className="w-4 h-4" />
@@ -95,7 +95,7 @@ export const HistoryPanel: React.FC = () => {
           )}
           <button
             onClick={() => setIsOpen(false)}
-            className="p-1.5 rounded hover:bg-white/10 text-white/60 hover:text-white transition"
+            className="p-1.5 rounded hover:bg-[var(--header-btn-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition"
             title="Tutup"
           >
             <X className="w-4 h-4" />
@@ -104,15 +104,15 @@ export const HistoryPanel: React.FC = () => {
       </div>
 
       {/* Search Input */}
-      <div className="p-2 border-b border-white/5">
+      <div className="p-2 border-b border-[var(--border-subtle)]">
         <div className="relative flex items-center">
-          <Search className="w-3.5 h-3.5 text-white/40 absolute left-2.5 pointer-events-none" />
+          <Search className="w-3.5 h-3.5 text-[var(--text-muted)] absolute left-2.5 pointer-events-none" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Cari riwayat perhitungan..."
-            className="w-full pl-8 pr-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-xs text-white placeholder-white/40 focus:outline-none focus:border-dsln-accent"
+            className="w-full pl-8 pr-3 py-1.5 bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-md text-xs text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-dsln-accent shadow-sm"
           />
         </div>
       </div>
@@ -120,7 +120,7 @@ export const HistoryPanel: React.FC = () => {
       {/* List */}
       <div className="flex-1 overflow-y-auto p-2 space-y-2">
         {filteredItems.length === 0 ? (
-          <div className="h-40 flex flex-col items-center justify-center text-center text-white/40 text-xs">
+          <div className="h-40 flex flex-col items-center justify-center text-center text-[var(--text-muted)] text-xs">
             <Clock className="w-8 h-8 mb-2 stroke-[1.5] opacity-50" />
             <p>Belum ada riwayat kalkulasi</p>
           </div>
@@ -128,36 +128,36 @@ export const HistoryPanel: React.FC = () => {
           filteredItems.map((item) => (
             <div
               key={item.id}
-              className="group p-2.5 rounded-lg bg-white/[0.03] hover:bg-white/[0.08] border border-white/5 transition-all text-right"
+              className="group p-2.5 rounded-lg bg-[var(--bg-card)] hover:opacity-90 border border-[var(--border-card)] transition-all text-right shadow-sm"
             >
-              <div className="flex items-center justify-between text-[10px] text-white/40 mb-1">
+              <div className="flex items-center justify-between text-[10px] text-[var(--text-muted)] mb-1">
                 <span className="capitalize">{item.calculator_mode} • {formatTimestamp(item.created_at)}</span>
                 <div className="flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button
                     onClick={() => toggleFavorite(item.id)}
-                    className="p-1 rounded hover:bg-white/10"
+                    className="p-1 rounded hover:bg-[var(--header-btn-hover)]"
                     title={item.is_favorite ? 'Hapus dari Favorit' : 'Bintang Favorit'}
                   >
                     <Star
                       className={`w-3 h-3 ${
-                        item.is_favorite ? 'text-amber-400 fill-amber-400' : 'text-white/50'
+                        item.is_favorite ? 'text-amber-500 fill-amber-500' : 'text-[var(--text-muted)]'
                       }`}
                     />
                   </button>
                   <button
                     onClick={() => handleCopy(item.id, item.result)}
-                    className="p-1 rounded hover:bg-white/10"
+                    className="p-1 rounded hover:bg-[var(--header-btn-hover)]"
                     title="Salin hasil"
                   >
                     {copiedId === item.id ? (
-                      <Check className="w-3 h-3 text-green-400" />
+                      <Check className="w-3 h-3 text-green-500" />
                     ) : (
-                      <Copy className="w-3 h-3 text-white/50" />
+                      <Copy className="w-3 h-3 text-[var(--text-muted)]" />
                     )}
                   </button>
                   <button
                     onClick={() => deleteItem(item.id)}
-                    className="p-1 rounded hover:bg-red-500/20 text-white/50 hover:text-red-400"
+                    className="p-1 rounded hover:bg-red-500/20 text-[var(--text-muted)] hover:text-red-500"
                     title="Hapus riwayat ini"
                   >
                     <Trash2 className="w-3 h-3" />
@@ -166,14 +166,14 @@ export const HistoryPanel: React.FC = () => {
               </div>
 
               {/* Expression */}
-              <div className="text-xs text-white/60 font-mono truncate">
+              <div className="text-xs text-[var(--text-secondary)] font-mono truncate">
                 {formatExpression(item.expression, settings.numberFormat)}
               </div>
 
               {/* Result */}
               <div
                 onClick={() => handleReuse(item.expression, item.result)}
-                className="text-lg font-semibold text-white tracking-tight cursor-pointer hover:text-dsln-accent transition flex items-center justify-end space-x-1"
+                className="text-lg font-semibold text-[var(--text-primary)] tracking-tight cursor-pointer hover:text-dsln-accent transition flex items-center justify-end space-x-1"
                 title="Klik untuk gunakan kembali"
               >
                 <span>

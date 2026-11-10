@@ -87,11 +87,13 @@ export const ConverterView: React.FC = () => {
   return (
     <div className="flex-1 flex flex-col overflow-hidden select-none p-3 space-y-3">
       {/* Top Selector: Unit Converter vs Currency Converter */}
-      <div className="grid grid-cols-2 gap-1 p-1 bg-black/20 rounded-lg border border-white/10">
+      <div className="grid grid-cols-2 gap-1 p-1 bg-[var(--bg-card)] rounded-xl border border-[var(--border-card)] shadow-sm">
         <button
           onClick={() => setActiveTab('unit')}
-          className={`flex items-center justify-center space-x-1.5 py-1.5 rounded-md text-xs font-semibold transition ${
-            activeTab === 'unit' ? 'bg-dsln-accent text-white shadow-sm' : 'text-white/60 hover:text-white'
+          className={`flex items-center justify-center space-x-1.5 py-1.5 rounded-lg text-xs font-semibold transition ${
+            activeTab === 'unit'
+              ? 'bg-dsln-accent text-white shadow-sm'
+              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--header-btn-hover)]'
           }`}
         >
           <Scale className="w-3.5 h-3.5" />
@@ -99,8 +101,10 @@ export const ConverterView: React.FC = () => {
         </button>
         <button
           onClick={() => setActiveTab('currency')}
-          className={`flex items-center justify-center space-x-1.5 py-1.5 rounded-md text-xs font-semibold transition ${
-            activeTab === 'currency' ? 'bg-dsln-accent text-white shadow-sm' : 'text-white/60 hover:text-white'
+          className={`flex items-center justify-center space-x-1.5 py-1.5 rounded-lg text-xs font-semibold transition ${
+            activeTab === 'currency'
+              ? 'bg-dsln-accent text-white shadow-sm'
+              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--header-btn-hover)]'
           }`}
         >
           <DollarSign className="w-3.5 h-3.5" />
@@ -113,14 +117,14 @@ export const ConverterView: React.FC = () => {
         <div className="flex-1 flex flex-col space-y-3 overflow-y-auto pr-1">
           {/* Category Dropdown / Scrollbar */}
           <div className="flex items-center space-x-2">
-            <span className="text-xs text-white/50 uppercase font-semibold">Kategori:</span>
+            <span className="text-xs text-[var(--text-secondary)] uppercase font-semibold">Kategori:</span>
             <select
               value={category}
               onChange={(e) => handleCategoryChange(e.target.value as UnitCategory)}
-              className="flex-1 bg-white/5 border border-white/10 rounded-md px-3 py-1.5 text-xs text-white font-medium focus:outline-none focus:border-dsln-accent"
+              className="flex-1 bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-3 py-1.5 text-xs text-[var(--text-primary)] font-medium focus:outline-none focus:border-dsln-accent shadow-sm"
             >
               {(Object.keys(UNIT_CATEGORIES) as UnitCategory[]).map((cat) => (
-                <option key={cat} value={cat} className="bg-[#1e2129]">
+                <option key={cat} value={cat} className="bg-[var(--bg-surface)] text-[var(--text-primary)]">
                   {UNIT_CATEGORIES[cat].label}
                 </option>
               ))}
@@ -128,18 +132,18 @@ export const ConverterView: React.FC = () => {
           </div>
 
           {/* Interactive Conversion Box */}
-          <div className="bg-white/[0.03] border border-white/10 rounded-xl p-3 space-y-3">
+          <div className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-xl p-3.5 space-y-3 shadow-sm">
             {/* From Input */}
             <div className="space-y-1">
-              <div className="flex justify-between items-center text-xs text-white/60">
-                <span>Dari</span>
+              <div className="flex justify-between items-center text-xs text-[var(--text-secondary)]">
+                <span className="font-medium">Dari</span>
                 <select
                   value={fromUnit}
                   onChange={(e) => setFromUnit(e.target.value)}
-                  className="bg-transparent text-white font-semibold focus:outline-none cursor-pointer"
+                  className="bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-[var(--text-primary)] px-2 py-0.5 rounded-md font-semibold focus:outline-none cursor-pointer"
                 >
                   {currentCategoryUnits.map((u) => (
-                    <option key={u.id} value={u.id} className="bg-[#1e2129]">
+                    <option key={u.id} value={u.id} className="bg-[var(--bg-surface)] text-[var(--text-primary)]">
                       {u.name} ({u.symbol})
                     </option>
                   ))}
@@ -149,7 +153,7 @@ export const ConverterView: React.FC = () => {
                 type="number"
                 value={unitAmount}
                 onChange={(e) => setUnitAmount(Number(e.target.value))}
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xl font-bold font-mono text-white focus:outline-none focus:border-dsln-accent"
+                className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-xl px-3 py-2 text-xl font-bold font-mono text-[var(--text-primary)] focus:outline-none focus:border-dsln-accent shadow-inner transition"
               />
             </div>
 
@@ -157,7 +161,7 @@ export const ConverterView: React.FC = () => {
             <div className="flex justify-center -my-1">
               <button
                 onClick={handleSwapUnits}
-                className="p-1.5 rounded-full bg-white/10 hover:bg-dsln-accent text-white transition active:scale-95 shadow-sm"
+                className="p-1.5 rounded-full bg-[var(--btn-op-bg)] hover:bg-dsln-accent text-[var(--text-primary)] hover:text-white transition active:scale-95 shadow-sm border border-[var(--border-subtle)]"
                 title="Tukar satuan"
               >
                 <ArrowLeftRight className="w-4 h-4" />
@@ -166,27 +170,27 @@ export const ConverterView: React.FC = () => {
 
             {/* To Output */}
             <div className="space-y-1">
-              <div className="flex justify-between items-center text-xs text-white/60">
-                <span>Ke</span>
+              <div className="flex justify-between items-center text-xs text-[var(--text-secondary)]">
+                <span className="font-medium">Ke</span>
                 <select
                   value={toUnit}
                   onChange={(e) => setToUnit(e.target.value)}
-                  className="bg-transparent text-white font-semibold focus:outline-none cursor-pointer"
+                  className="bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-[var(--text-primary)] px-2 py-0.5 rounded-md font-semibold focus:outline-none cursor-pointer"
                 >
                   {currentCategoryUnits.map((u) => (
-                    <option key={u.id} value={u.id} className="bg-[#1e2129]">
+                    <option key={u.id} value={u.id} className="bg-[var(--bg-surface)] text-[var(--text-primary)]">
                       {u.name} ({u.symbol})
                     </option>
                   ))}
                 </select>
               </div>
-              <div className="w-full bg-black/30 border border-white/10 rounded-lg px-3 py-2 text-xl font-bold font-mono text-dsln-accent select-all">
+              <div className="w-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-xl px-3 py-2 text-xl font-bold font-mono text-dsln-accent select-all shadow-inner">
                 {fmt(convertedUnitVal, 6)}
               </div>
             </div>
 
             {/* Formula Hint */}
-            <div className="text-[11px] text-white/40 text-center font-mono pt-1 border-t border-white/5">
+            <div className="text-[11px] text-[var(--text-muted)] text-center font-mono pt-2 border-t border-[var(--border-subtle)]">
               1 {fromUnit} = {fmt(convertUnits(category, fromUnit, toUnit, 1), 6)} {toUnit}
             </div>
           </div>
@@ -197,16 +201,16 @@ export const ConverterView: React.FC = () => {
       {activeTab === 'currency' && (
         <div className="flex-1 flex flex-col space-y-3 overflow-y-auto pr-1">
           {/* Status Bar */}
-          <div className="flex items-center justify-between text-[11px] text-white/60 px-1">
+          <div className="flex items-center justify-between text-[11px] text-[var(--text-secondary)] px-1">
             <div className="flex items-center space-x-1">
               {rateData.isCached ? (
                 <>
-                  <WifiOff className="w-3.5 h-3.5 text-amber-400" />
+                  <WifiOff className="w-3.5 h-3.5 text-amber-500" />
                   <span>Kurs Tersimpan ({rateData.updatedAt})</span>
                 </>
               ) : (
                 <>
-                  <Wifi className="w-3.5 h-3.5 text-green-400" />
+                  <Wifi className="w-3.5 h-3.5 text-green-500" />
                   <span>Kurs Terkini ({rateData.updatedAt})</span>
                 </>
               )}
@@ -214,7 +218,7 @@ export const ConverterView: React.FC = () => {
             <button
               onClick={handleRefreshRates}
               disabled={isRefreshing}
-              className="flex items-center space-x-1 text-dsln-accent hover:underline disabled:opacity-50"
+              className="flex items-center space-x-1 text-dsln-accent hover:underline font-semibold disabled:opacity-50"
             >
               <RefreshCw className={`w-3 h-3 ${isRefreshing ? 'animate-spin' : ''}`} />
               <span>{isRefreshing ? 'Memperbarui...' : 'Perbarui Kurs'}</span>
@@ -222,18 +226,18 @@ export const ConverterView: React.FC = () => {
           </div>
 
           {/* Currency Input Card */}
-          <div className="bg-white/[0.03] border border-white/10 rounded-xl p-3 space-y-3">
+          <div className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-xl p-3.5 space-y-3 shadow-sm">
             {/* From Currency */}
             <div className="space-y-1">
-              <div className="flex justify-between items-center text-xs text-white/60">
-                <span>Dari</span>
+              <div className="flex justify-between items-center text-xs text-[var(--text-secondary)]">
+                <span className="font-medium">Dari</span>
                 <select
                   value={fromCurrency}
                   onChange={(e) => setFromCurrency(e.target.value)}
-                  className="bg-transparent text-white font-semibold focus:outline-none cursor-pointer"
+                  className="bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-[var(--text-primary)] px-2 py-0.5 rounded-md font-semibold focus:outline-none cursor-pointer"
                 >
                   {SUPPORTED_CURRENCIES.map((c) => (
-                    <option key={c.code} value={c.code} className="bg-[#1e2129]">
+                    <option key={c.code} value={c.code} className="bg-[var(--bg-surface)] text-[var(--text-primary)]">
                       {c.flag} {c.code} - {c.name}
                     </option>
                   ))}
@@ -243,7 +247,7 @@ export const ConverterView: React.FC = () => {
                 type="number"
                 value={currAmount}
                 onChange={(e) => setCurrAmount(Number(e.target.value))}
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xl font-bold font-mono text-white focus:outline-none focus:border-dsln-accent"
+                className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-xl px-3 py-2 text-xl font-bold font-mono text-[var(--text-primary)] focus:outline-none focus:border-dsln-accent shadow-inner transition"
               />
             </div>
 
@@ -251,7 +255,7 @@ export const ConverterView: React.FC = () => {
             <div className="flex justify-center -my-1">
               <button
                 onClick={handleSwapCurrencies}
-                className="p-1.5 rounded-full bg-white/10 hover:bg-dsln-accent text-white transition active:scale-95 shadow-sm"
+                className="p-1.5 rounded-full bg-[var(--btn-op-bg)] hover:bg-dsln-accent text-[var(--text-primary)] hover:text-white transition active:scale-95 shadow-sm border border-[var(--border-subtle)]"
                 title="Tukar mata uang"
               >
                 <ArrowLeftRight className="w-4 h-4" />
@@ -260,27 +264,27 @@ export const ConverterView: React.FC = () => {
 
             {/* To Currency */}
             <div className="space-y-1">
-              <div className="flex justify-between items-center text-xs text-white/60">
-                <span>Ke</span>
+              <div className="flex justify-between items-center text-xs text-[var(--text-secondary)]">
+                <span className="font-medium">Ke</span>
                 <select
                   value={toCurrency}
                   onChange={(e) => setToCurrency(e.target.value)}
-                  className="bg-transparent text-white font-semibold focus:outline-none cursor-pointer"
+                  className="bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-[var(--text-primary)] px-2 py-0.5 rounded-md font-semibold focus:outline-none cursor-pointer"
                 >
                   {SUPPORTED_CURRENCIES.map((c) => (
-                    <option key={c.code} value={c.code} className="bg-[#1e2129]">
+                    <option key={c.code} value={c.code} className="bg-[var(--bg-surface)] text-[var(--text-primary)]">
                       {c.flag} {c.code} - {c.name}
                     </option>
                   ))}
                 </select>
               </div>
-              <div className="w-full bg-black/30 border border-white/10 rounded-lg px-3 py-2 text-xl font-bold font-mono text-green-400 select-all">
+              <div className="w-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-xl px-3 py-2 text-xl font-bold font-mono text-green-600 dark:text-green-400 select-all shadow-inner">
                 {fmt(convertedCurrVal, 2)}
               </div>
             </div>
 
             {/* Rate Hint */}
-            <div className="text-[11px] text-white/40 text-center font-mono pt-1 border-t border-white/5">
+            <div className="text-[11px] text-[var(--text-muted)] text-center font-mono pt-2 border-t border-[var(--border-subtle)]">
               1 {fromCurrency} = {fmt(convertCurrency(fromCurrency, toCurrency, 1, rateData.rates), 4)} {toCurrency}
             </div>
           </div>

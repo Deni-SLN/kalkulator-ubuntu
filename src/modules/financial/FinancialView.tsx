@@ -62,11 +62,13 @@ export const FinancialView: React.FC = () => {
   return (
     <div className="flex-1 flex flex-col overflow-hidden select-none p-3 space-y-3">
       {/* Sub Tabs */}
-      <div className="grid grid-cols-4 gap-1 p-1 bg-black/20 rounded-lg border border-white/10">
+      <div className="grid grid-cols-4 gap-1 p-1 bg-[var(--bg-card)] rounded-xl border border-[var(--border-card)] shadow-sm">
         <button
           onClick={() => setActiveTab('stock')}
-          className={`flex items-center justify-center space-x-1.5 py-1.5 rounded-md text-xs font-semibold transition ${
-            activeTab === 'stock' ? 'bg-dsln-accent text-white shadow-sm' : 'text-white/60 hover:text-white'
+          className={`flex items-center justify-center space-x-1.5 py-1.5 rounded-lg text-xs font-semibold transition ${
+            activeTab === 'stock'
+              ? 'bg-dsln-accent text-white shadow-sm'
+              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--header-btn-hover)]'
           }`}
         >
           <TrendingUp className="w-3.5 h-3.5" />
@@ -74,8 +76,10 @@ export const FinancialView: React.FC = () => {
         </button>
         <button
           onClick={() => setActiveTab('loan')}
-          className={`flex items-center justify-center space-x-1.5 py-1.5 rounded-md text-xs font-semibold transition ${
-            activeTab === 'loan' ? 'bg-dsln-accent text-white shadow-sm' : 'text-white/60 hover:text-white'
+          className={`flex items-center justify-center space-x-1.5 py-1.5 rounded-lg text-xs font-semibold transition ${
+            activeTab === 'loan'
+              ? 'bg-dsln-accent text-white shadow-sm'
+              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--header-btn-hover)]'
           }`}
         >
           <Home className="w-3.5 h-3.5" />
@@ -83,8 +87,10 @@ export const FinancialView: React.FC = () => {
         </button>
         <button
           onClick={() => setActiveTab('investment')}
-          className={`flex items-center justify-center space-x-1.5 py-1.5 rounded-md text-xs font-semibold transition ${
-            activeTab === 'investment' ? 'bg-dsln-accent text-white shadow-sm' : 'text-white/60 hover:text-white'
+          className={`flex items-center justify-center space-x-1.5 py-1.5 rounded-lg text-xs font-semibold transition ${
+            activeTab === 'investment'
+              ? 'bg-dsln-accent text-white shadow-sm'
+              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--header-btn-hover)]'
           }`}
         >
           <PiggyBank className="w-3.5 h-3.5" />
@@ -92,8 +98,10 @@ export const FinancialView: React.FC = () => {
         </button>
         <button
           onClick={() => setActiveTab('business')}
-          className={`flex items-center justify-center space-x-1.5 py-1.5 rounded-md text-xs font-semibold transition ${
-            activeTab === 'business' ? 'bg-dsln-accent text-white shadow-sm' : 'text-white/60 hover:text-white'
+          className={`flex items-center justify-center space-x-1.5 py-1.5 rounded-lg text-xs font-semibold transition ${
+            activeTab === 'business'
+              ? 'bg-dsln-accent text-white shadow-sm'
+              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--header-btn-hover)]'
           }`}
         >
           <Briefcase className="w-3.5 h-3.5" />
@@ -106,58 +114,58 @@ export const FinancialView: React.FC = () => {
         {/* --- STOCK TAB --- */}
         {activeTab === 'stock' && (
           <div className="space-y-3">
-            <div className="bg-white/[0.03] border border-white/10 rounded-xl p-3 space-y-3">
+            <div className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-xl p-3.5 space-y-3 shadow-sm">
               <span className="text-xs font-semibold uppercase tracking-wider text-dsln-accent">
                 Kalkulator Average Down
               </span>
-              <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="grid grid-cols-2 gap-2.5 text-xs">
                 <div>
-                  <label className="text-white/60 block mb-1">Jumlah Saham Awal (Lot/Lembar)</label>
+                  <label className="text-[var(--text-secondary)] block mb-1 font-medium">Jumlah Saham Awal (Lot)</label>
                   <input
                     type="number"
                     value={initShares}
                     onChange={(e) => setInitShares(Number(e.target.value))}
-                    className="w-full bg-white/5 border border-white/10 rounded px-2.5 py-1.5 text-white font-mono focus:outline-none focus:border-dsln-accent"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-2.5 py-1.5 text-[var(--text-primary)] font-mono focus:outline-none focus:border-dsln-accent focus:ring-1 focus:ring-dsln-accent transition"
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Harga Beli Awal</label>
+                  <label className="text-[var(--text-secondary)] block mb-1 font-medium">Harga Beli Awal</label>
                   <input
                     type="number"
                     value={initPrice}
                     onChange={(e) => setInitPrice(Number(e.target.value))}
-                    className="w-full bg-white/5 border border-white/10 rounded px-2.5 py-1.5 text-white font-mono focus:outline-none focus:border-dsln-accent"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-2.5 py-1.5 text-[var(--text-primary)] font-mono focus:outline-none focus:border-dsln-accent focus:ring-1 focus:ring-dsln-accent transition"
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Jumlah Saham Tambahan</label>
+                  <label className="text-[var(--text-secondary)] block mb-1 font-medium">Jumlah Saham Tambahan</label>
                   <input
                     type="number"
                     value={addShares}
                     onChange={(e) => setAddShares(Number(e.target.value))}
-                    className="w-full bg-white/5 border border-white/10 rounded px-2.5 py-1.5 text-white font-mono focus:outline-none focus:border-dsln-accent"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-2.5 py-1.5 text-[var(--text-primary)] font-mono focus:outline-none focus:border-dsln-accent focus:ring-1 focus:ring-dsln-accent transition"
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Harga Beli Tambahan</label>
+                  <label className="text-[var(--text-secondary)] block mb-1 font-medium">Harga Beli Tambahan</label>
                   <input
                     type="number"
                     value={addPrice}
                     onChange={(e) => setAddPrice(Number(e.target.value))}
-                    className="w-full bg-white/5 border border-white/10 rounded px-2.5 py-1.5 text-white font-mono focus:outline-none focus:border-dsln-accent"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-2.5 py-1.5 text-[var(--text-primary)] font-mono focus:outline-none focus:border-dsln-accent focus:ring-1 focus:ring-dsln-accent transition"
                   />
                 </div>
               </div>
 
               {/* Result Summary Card */}
-              <div className="p-3 rounded-lg bg-black/30 border border-white/10 grid grid-cols-3 gap-2 text-center">
+              <div className="p-3 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] grid grid-cols-3 gap-2 text-center">
                 <div>
-                  <div className="text-[10px] text-white/50">Total Saham</div>
-                  <div className="text-sm font-bold text-white font-mono">{fmtInt(avgDownResult.totalShares)}</div>
+                  <div className="text-[10px] text-[var(--text-muted)]">Total Saham</div>
+                  <div className="text-sm font-bold text-[var(--text-primary)] font-mono">{fmtInt(avgDownResult.totalShares)}</div>
                 </div>
                 <div>
-                  <div className="text-[10px] text-white/50">Total Investasi</div>
-                  <div className="text-sm font-bold text-white font-mono">{fmtInt(avgDownResult.totalInvestment)}</div>
+                  <div className="text-[10px] text-[var(--text-muted)]">Total Investasi</div>
+                  <div className="text-sm font-bold text-[var(--text-primary)] font-mono">{fmtInt(avgDownResult.totalInvestment)}</div>
                 </div>
                 <div>
                   <div className="text-[10px] text-dsln-accent">Harga Rata-Rata (Avg)</div>
@@ -171,57 +179,57 @@ export const FinancialView: React.FC = () => {
         {/* --- LOAN TAB --- */}
         {activeTab === 'loan' && (
           <div className="space-y-3">
-            <div className="bg-white/[0.03] border border-white/10 rounded-xl p-3 space-y-3">
+            <div className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-xl p-3.5 space-y-3 shadow-sm">
               <span className="text-xs font-semibold uppercase tracking-wider text-dsln-accent">
                 Simulasi Pinjaman & KPR
               </span>
-              <div className="space-y-2 text-xs">
+              <div className="space-y-2.5 text-xs">
                 <div>
-                  <label className="text-white/60 block mb-1">Plafon Pinjaman</label>
+                  <label className="text-[var(--text-secondary)] block mb-1 font-medium">Plafon Pinjaman</label>
                   <input
                     type="number"
                     step="1000000"
                     value={loanAmount}
                     onChange={(e) => setLoanAmount(Number(e.target.value))}
-                    className="w-full bg-white/5 border border-white/10 rounded px-2.5 py-1.5 text-white font-mono focus:outline-none focus:border-dsln-accent"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-2.5 py-1.5 text-[var(--text-primary)] font-mono focus:outline-none focus:border-dsln-accent focus:ring-1 focus:ring-dsln-accent transition"
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-2.5">
                   <div>
-                    <label className="text-white/60 block mb-1">Suku Bunga / Tahun (%)</label>
+                    <label className="text-[var(--text-secondary)] block mb-1 font-medium">Suku Bunga / Tahun (%)</label>
                     <input
                       type="number"
                       step="0.1"
                       value={loanRate}
                       onChange={(e) => setLoanRate(Number(e.target.value))}
-                      className="w-full bg-white/5 border border-white/10 rounded px-2.5 py-1.5 text-white font-mono focus:outline-none focus:border-dsln-accent"
+                      className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-2.5 py-1.5 text-[var(--text-primary)] font-mono focus:outline-none focus:border-dsln-accent focus:ring-1 focus:ring-dsln-accent transition"
                     />
                   </div>
                   <div>
-                    <label className="text-white/60 block mb-1">Jangka Waktu (Tahun)</label>
+                    <label className="text-[var(--text-secondary)] block mb-1 font-medium">Jangka Waktu (Tahun)</label>
                     <input
                       type="number"
                       value={loanTenureYears}
                       onChange={(e) => setLoanTenureYears(Number(e.target.value))}
-                      className="w-full bg-white/5 border border-white/10 rounded px-2.5 py-1.5 text-white font-mono focus:outline-none focus:border-dsln-accent"
+                      className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-2.5 py-1.5 text-[var(--text-primary)] font-mono focus:outline-none focus:border-dsln-accent focus:ring-1 focus:ring-dsln-accent transition"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Loan Result Card */}
-              <div className="p-3 rounded-lg bg-black/30 border border-white/10 space-y-2">
-                <div className="flex justify-between items-center pb-1 border-b border-white/10">
+              <div className="p-3.5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] space-y-2">
+                <div className="flex justify-between items-center pb-2 border-b border-[var(--border-subtle)]">
                   <span className="text-xs text-dsln-accent font-semibold">Cicilan per Bulan</span>
                   <span className="text-base font-bold text-dsln-accent font-mono">{fmtInt(loanResult.monthlyInstallment)}</span>
                 </div>
-                <div className="flex justify-between text-xs text-white/70">
+                <div className="flex justify-between text-xs text-[var(--text-secondary)]">
                   <span>Total Bunga Dibayarkan:</span>
-                  <span className="font-mono text-white">{fmtInt(loanResult.totalInterest)}</span>
+                  <span className="font-mono text-[var(--text-primary)] font-medium">{fmtInt(loanResult.totalInterest)}</span>
                 </div>
-                <div className="flex justify-between text-xs text-white/70">
+                <div className="flex justify-between text-xs text-[var(--text-secondary)]">
                   <span>Total Pembayaran (Pokok + Bunga):</span>
-                  <span className="font-mono text-white">{fmtInt(loanResult.totalPayment)}</span>
+                  <span className="font-mono text-[var(--text-primary)] font-medium">{fmtInt(loanResult.totalPayment)}</span>
                 </div>
               </div>
             </div>
@@ -231,63 +239,63 @@ export const FinancialView: React.FC = () => {
         {/* --- INVESTMENT TAB --- */}
         {activeTab === 'investment' && (
           <div className="space-y-3">
-            <div className="bg-white/[0.03] border border-white/10 rounded-xl p-3 space-y-3">
+            <div className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-xl p-3.5 space-y-3 shadow-sm">
               <span className="text-xs font-semibold uppercase tracking-wider text-dsln-accent">
                 Bunga Majemuk & Pertumbuhan Investasi
               </span>
-              <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="grid grid-cols-2 gap-2.5 text-xs">
                 <div>
-                  <label className="text-white/60 block mb-1">Setoran Awal</label>
+                  <label className="text-[var(--text-secondary)] block mb-1 font-medium">Setoran Awal</label>
                   <input
                     type="number"
                     value={invPrincipal}
                     onChange={(e) => setInvPrincipal(Number(e.target.value))}
-                    className="w-full bg-white/5 border border-white/10 rounded px-2.5 py-1.5 text-white font-mono focus:outline-none focus:border-dsln-accent"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-2.5 py-1.5 text-[var(--text-primary)] font-mono focus:outline-none focus:border-dsln-accent focus:ring-1 focus:ring-dsln-accent transition"
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Setoran Rutin Bulanan</label>
+                  <label className="text-[var(--text-secondary)] block mb-1 font-medium">Setoran Rutin Bulanan</label>
                   <input
                     type="number"
                     value={invMonthly}
                     onChange={(e) => setInvMonthly(Number(e.target.value))}
-                    className="w-full bg-white/5 border border-white/10 rounded px-2.5 py-1.5 text-white font-mono focus:outline-none focus:border-dsln-accent"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-2.5 py-1.5 text-[var(--text-primary)] font-mono focus:outline-none focus:border-dsln-accent focus:ring-1 focus:ring-dsln-accent transition"
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Estimasi Imbal Hasil / Thn (%)</label>
+                  <label className="text-[var(--text-secondary)] block mb-1 font-medium">Estimasi Imbal Hasil / Thn (%)</label>
                   <input
                     type="number"
                     step="0.5"
                     value={invRate}
                     onChange={(e) => setInvRate(Number(e.target.value))}
-                    className="w-full bg-white/5 border border-white/10 rounded px-2.5 py-1.5 text-white font-mono focus:outline-none focus:border-dsln-accent"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-2.5 py-1.5 text-[var(--text-primary)] font-mono focus:outline-none focus:border-dsln-accent focus:ring-1 focus:ring-dsln-accent transition"
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Jangka Waktu (Tahun)</label>
+                  <label className="text-[var(--text-secondary)] block mb-1 font-medium">Jangka Waktu (Tahun)</label>
                   <input
                     type="number"
                     value={invYears}
                     onChange={(e) => setInvYears(Number(e.target.value))}
-                    className="w-full bg-white/5 border border-white/10 rounded px-2.5 py-1.5 text-white font-mono focus:outline-none focus:border-dsln-accent"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-2.5 py-1.5 text-[var(--text-primary)] font-mono focus:outline-none focus:border-dsln-accent focus:ring-1 focus:ring-dsln-accent transition"
                   />
                 </div>
               </div>
 
               {/* Investment Result Card */}
-              <div className="p-3 rounded-lg bg-black/30 border border-white/10 space-y-2">
-                <div className="flex justify-between items-center pb-1 border-b border-white/10">
-                  <span className="text-xs text-green-400 font-semibold">Nilai Akhir (Future Value)</span>
-                  <span className="text-base font-bold text-green-400 font-mono">{fmtInt(invResult.futureValue)}</span>
+              <div className="p-3.5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] space-y-2">
+                <div className="flex justify-between items-center pb-2 border-b border-[var(--border-subtle)]">
+                  <span className="text-xs text-green-600 dark:text-green-400 font-semibold">Nilai Akhir (Future Value)</span>
+                  <span className="text-base font-bold text-green-600 dark:text-green-400 font-mono">{fmtInt(invResult.futureValue)}</span>
                 </div>
-                <div className="flex justify-between text-xs text-white/70">
+                <div className="flex justify-between text-xs text-[var(--text-secondary)]">
                   <span>Total Modal Disetor:</span>
-                  <span className="font-mono text-white">{fmtInt(invResult.totalDeposited)}</span>
+                  <span className="font-mono text-[var(--text-primary)] font-medium">{fmtInt(invResult.totalDeposited)}</span>
                 </div>
-                <div className="flex justify-between text-xs text-white/70">
+                <div className="flex justify-between text-xs text-[var(--text-secondary)]">
                   <span>Total Keuntungan Bunga:</span>
-                  <span className="font-mono text-green-300">+{fmtInt(invResult.totalInterest)}</span>
+                  <span className="font-mono text-green-600 dark:text-green-400 font-semibold">+{fmtInt(invResult.totalInterest)}</span>
                 </div>
               </div>
             </div>
@@ -297,44 +305,44 @@ export const FinancialView: React.FC = () => {
         {/* --- BUSINESS TAB --- */}
         {activeTab === 'business' && (
           <div className="space-y-3">
-            <div className="bg-white/[0.03] border border-white/10 rounded-xl p-3 space-y-3">
+            <div className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-xl p-3.5 space-y-3 shadow-sm">
               <span className="text-xs font-semibold uppercase tracking-wider text-dsln-accent">
                 Margin Laba & Markup
               </span>
-              <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="grid grid-cols-2 gap-2.5 text-xs">
                 <div>
-                  <label className="text-white/60 block mb-1">Pendapatan / Harga Jual</label>
+                  <label className="text-[var(--text-secondary)] block mb-1 font-medium">Pendapatan / Harga Jual</label>
                   <input
                     type="number"
                     value={bizRevenue}
                     onChange={(e) => setBizRevenue(Number(e.target.value))}
-                    className="w-full bg-white/5 border border-white/10 rounded px-2.5 py-1.5 text-white font-mono focus:outline-none focus:border-dsln-accent"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-2.5 py-1.5 text-[var(--text-primary)] font-mono focus:outline-none focus:border-dsln-accent focus:ring-1 focus:ring-dsln-accent transition"
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Harga Pokok Penjualan (HPP / Biaya)</label>
+                  <label className="text-[var(--text-secondary)] block mb-1 font-medium">Harga Pokok Penjualan (HPP / Biaya)</label>
                   <input
                     type="number"
                     value={bizCost}
                     onChange={(e) => setBizCost(Number(e.target.value))}
-                    className="w-full bg-white/5 border border-white/10 rounded px-2.5 py-1.5 text-white font-mono focus:outline-none focus:border-dsln-accent"
+                    className="w-full bg-[var(--bg-input)] border border-[var(--bg-input-border)] rounded-lg px-2.5 py-1.5 text-[var(--text-primary)] font-mono focus:outline-none focus:border-dsln-accent focus:ring-1 focus:ring-dsln-accent transition"
                   />
                 </div>
               </div>
 
               {/* Business Result Card */}
-              <div className="p-3 rounded-lg bg-black/30 border border-white/10 grid grid-cols-3 gap-2 text-center">
+              <div className="p-3.5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] grid grid-cols-3 gap-2 text-center">
                 <div>
-                  <div className="text-[10px] text-white/50">Laba Kotor</div>
-                  <div className="text-sm font-bold text-white font-mono">{fmtInt(bizResult.profit)}</div>
+                  <div className="text-[10px] text-[var(--text-muted)]">Laba Kotor</div>
+                  <div className="text-sm font-bold text-[var(--text-primary)] font-mono">{fmtInt(bizResult.profit)}</div>
                 </div>
                 <div>
                   <div className="text-[10px] text-dsln-accent">Margin Laba</div>
                   <div className="text-sm font-bold text-dsln-accent font-mono">{bizResult.profitMargin.toFixed(1)}%</div>
                 </div>
                 <div>
-                  <div className="text-[10px] text-green-400">Markup</div>
-                  <div className="text-sm font-bold text-green-400 font-mono">{bizResult.markup.toFixed(1)}%</div>
+                  <div className="text-[10px] text-green-600 dark:text-green-400">Markup</div>
+                  <div className="text-sm font-bold text-green-600 dark:text-green-400 font-mono">{bizResult.markup.toFixed(1)}%</div>
                 </div>
               </div>
             </div>

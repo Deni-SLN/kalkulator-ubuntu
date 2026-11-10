@@ -125,17 +125,17 @@ export const ProgrammerView: React.FC = () => {
   };
 
   const numBtnClass = (disabled: boolean) =>
-    `h-9 sm:h-10 rounded-md font-mono font-medium text-sm sm:text-base transition-all flex items-center justify-center border border-white/5 active:scale-[0.98] ${
+    `h-9 sm:h-10 rounded-lg font-mono font-medium text-sm sm:text-base transition-all flex items-center justify-center border active:scale-[0.98] ${
       disabled
-        ? 'opacity-20 cursor-not-allowed bg-white/[0.02] text-white/30'
-        : 'bg-white/[0.07] hover:bg-white/[0.14] active:bg-white/[0.2] text-white shadow-sm'
+        ? 'opacity-25 cursor-not-allowed bg-[var(--btn-op-bg)] border-[var(--border-subtle)] text-[var(--text-muted)]'
+        : 'bg-[var(--btn-num-bg)] hover:bg-[var(--btn-num-hover)] active:bg-[var(--btn-num-active)] text-[var(--btn-num-text)] border-[var(--border-subtle)] shadow-[var(--btn-num-shadow)]'
     }`;
 
   const opBtnClass =
-    'h-9 sm:h-10 rounded-md bg-white/[0.04] hover:bg-white/[0.1] active:bg-white/[0.16] text-white/90 font-mono font-medium text-xs sm:text-sm transition-all flex items-center justify-center border border-white/5 active:scale-[0.98]';
+    'h-9 sm:h-10 rounded-lg bg-[var(--btn-op-bg)] hover:bg-[var(--btn-op-hover)] active:bg-[var(--btn-op-active)] text-[var(--btn-op-text)] font-mono font-medium text-xs sm:text-sm transition-all flex items-center justify-center border border-[var(--border-subtle)] active:scale-[0.98]';
 
   const accentBtnClass =
-    'h-9 sm:h-10 rounded-md bg-dsln-accent hover:opacity-90 active:opacity-100 text-white font-mono font-semibold text-base transition-all shadow-md flex items-center justify-center active:scale-[0.98]';
+    'h-9 sm:h-10 rounded-lg bg-dsln-accent hover:opacity-90 active:opacity-100 text-white font-mono font-semibold text-base transition-all shadow-md flex items-center justify-center active:scale-[0.98]';
 
   // Render 64/32/16/8 bits visual grid
   const maxBits = WORD_SIZE_BITS[wordSize];
@@ -151,7 +151,7 @@ export const ProgrammerView: React.FC = () => {
       <div className="flex items-center justify-between px-1">
         <button
           onClick={cycleWordSize}
-          className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-white/10 hover:bg-white/15 text-white text-xs font-mono font-semibold transition"
+          className="flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-[var(--btn-op-bg)] hover:bg-[var(--btn-op-hover)] border border-[var(--border-subtle)] text-[var(--text-primary)] text-xs font-mono font-semibold transition shadow-sm"
           title="Klik untuk mengganti ukuran kata: QWORD (64) -> DWORD (32) -> WORD (16) -> BYTE (8)"
         >
           <Cpu className="w-3.5 h-3.5 text-dsln-accent" />
@@ -159,14 +159,14 @@ export const ProgrammerView: React.FC = () => {
         </button>
 
         {pendingOp && (
-          <div className="text-xs font-mono text-dsln-accent font-semibold px-2 py-0.5 rounded bg-dsln-accent/20">
+          <div className="text-xs font-mono text-dsln-accent font-semibold px-2 py-0.5 rounded bg-dsln-accent/15 border border-dsln-accent/30">
             {savedVal !== null ? formatBase(savedVal, activeBase, wordSize) : ''} {pendingOp}
           </div>
         )}
       </div>
 
       {/* Base Conversions Panel (HEX, DEC, OCT, BIN) */}
-      <div className="bg-black/20 rounded-lg border border-white/10 p-2 space-y-1">
+      <div className="bg-[var(--bg-card)] rounded-xl border border-[var(--border-card)] p-2 space-y-1 shadow-sm">
         {(['HEX', 'DEC', 'OCT', 'BIN'] as NumberBase[]).map((base) => {
           const isActive = activeBase === base;
           const displayVal =
@@ -182,10 +182,10 @@ export const ProgrammerView: React.FC = () => {
             <div
               key={base}
               onClick={() => setActiveBase(base)}
-              className={`flex items-center justify-between px-2.5 py-1 rounded cursor-pointer transition font-mono ${
+              className={`flex items-center justify-between px-2.5 py-1.5 rounded-lg cursor-pointer transition font-mono ${
                 isActive
-                  ? 'bg-dsln-accent/20 border-l-2 border-dsln-accent text-white'
-                  : 'text-white/60 hover:bg-white/5 hover:text-white/80'
+                  ? 'bg-dsln-accent/15 border-l-4 border-dsln-accent text-[var(--text-primary)] font-bold'
+                  : 'text-[var(--text-secondary)] hover:bg-[var(--header-btn-hover)] hover:text-[var(--text-primary)]'
               }`}
             >
               <span className="text-[11px] font-bold w-10">{base}</span>
@@ -198,7 +198,7 @@ export const ProgrammerView: React.FC = () => {
       </div>
 
       {/* Bit Toggle Grid (Interactive 64 bits) */}
-      <div className="bg-black/10 rounded-lg p-2 border border-white/5">
+      <div className="bg-[var(--bg-card)] rounded-xl p-2.5 border border-[var(--border-card)] shadow-sm">
         <div className="flex flex-wrap gap-1 justify-end max-h-16 overflow-y-auto">
           {bits.map((isOn, idx) => {
             const actualBitIndex = maxBits - 1 - idx;
@@ -209,7 +209,7 @@ export const ProgrammerView: React.FC = () => {
                 className={`w-3.5 h-4 sm:w-4 sm:h-5 rounded text-[10px] font-mono flex items-center justify-center font-bold transition ${
                   isOn
                     ? 'bg-dsln-accent text-white shadow-sm'
-                    : 'bg-white/5 text-white/30 hover:bg-white/10 hover:text-white/70'
+                    : 'bg-[var(--btn-op-bg)] text-[var(--text-muted)] hover:bg-[var(--btn-op-hover)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)]'
                 } ${actualBitIndex % 4 === 0 && actualBitIndex !== 0 ? 'mr-1' : ''}`}
                 title={`Bit ${actualBitIndex}: ${isOn ? '1' : '0'} (klik untuk beralih)`}
               >
@@ -267,7 +267,7 @@ export const ProgrammerView: React.FC = () => {
           C
         </button>
         <button onClick={handleBackspace} className={opBtnClass} title="Hapus Terakhir (Backspace)">
-          <Delete className="w-4 h-4 text-white/80" />
+          <Delete className="w-4 h-4" />
         </button>
 
         {/* Row 3: C, D, 7, 8, 9, ( */}

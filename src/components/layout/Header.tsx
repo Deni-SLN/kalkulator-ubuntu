@@ -61,26 +61,26 @@ export const Header: React.FC<HeaderProps> = ({ onToggleSidebar, onOpenSettings 
   };
 
   return (
-    <header className="h-11 flex items-center justify-between px-2 bg-transparent select-none z-30 border-b border-white/5">
+    <header className="h-11 flex items-center justify-between px-2 bg-transparent select-none z-30 border-b border-[var(--border-subtle)]">
       {/* Left: Hamburger & Mode title */}
       <div className="flex items-center space-x-2">
         <button
           onClick={onToggleSidebar}
           aria-label="Buka menu navigasi"
           title="Menu Navigasi"
-          className="p-1.5 rounded-md hover:bg-white/10 active:bg-white/15 transition-colors text-white/80 hover:text-white"
+          className="p-1.5 rounded-md hover:bg-[var(--header-btn-hover)] active:bg-[var(--header-btn-active)] transition-colors text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
         >
           <Menu className="w-4 h-4" />
         </button>
 
-        <span className="font-semibold text-sm tracking-wide text-white/90">
+        <span className="font-semibold text-sm tracking-wide text-[var(--text-primary)]">
           {modeLabels[mode] || 'Kalkulator'}
         </span>
 
         {mode === 'scientific' && (
           <button
             onClick={cycleAngleMode}
-            className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 active:bg-white/25 text-white/80 uppercase font-semibold transition"
+            className="text-[11px] font-mono px-2 py-0.5 rounded bg-[var(--badge-bg)] text-[var(--badge-text)] uppercase font-semibold transition hover:opacity-80"
             title="Klik untuk beralih mode sudut: DEG / RAD / GRAD"
           >
             {angleMode}
@@ -96,8 +96,8 @@ export const Header: React.FC<HeaderProps> = ({ onToggleSidebar, onOpenSettings 
           title="Riwayat (Ctrl+H)"
           className={`p-1.5 rounded-md transition-colors ${
             isHistoryOpen
-              ? 'bg-dsln-accent text-white'
-              : 'text-white/80 hover:bg-white/10 active:bg-white/15 hover:text-white'
+              ? 'bg-dsln-accent text-white shadow-sm'
+              : 'text-[var(--text-secondary)] hover:bg-[var(--header-btn-hover)] active:bg-[var(--header-btn-active)] hover:text-[var(--text-primary)]'
           }`}
         >
           <History className="w-4 h-4" />
@@ -107,18 +107,18 @@ export const Header: React.FC<HeaderProps> = ({ onToggleSidebar, onOpenSettings 
           onClick={onOpenSettings}
           aria-label="Pengaturan (Ctrl+,)"
           title="Pengaturan (Ctrl+,)"
-          className="p-1.5 rounded-md text-white/80 hover:bg-white/10 active:bg-white/15 hover:text-white transition-colors"
+          className="p-1.5 rounded-md text-[var(--text-secondary)] hover:bg-[var(--header-btn-hover)] active:bg-[var(--header-btn-active)] hover:text-[var(--text-primary)] transition-colors"
         >
           <Settings className="w-4 h-4" />
         </button>
 
         {/* Window controls for Desktop experience */}
-        <div className="flex items-center pl-1 border-l border-white/10 space-x-0.5">
+        <div className="flex items-center pl-1 border-l border-[var(--border-subtle)] space-x-0.5">
           <button
             onClick={handleMinimize}
             aria-label="Perkecil"
             title="Perkecil"
-            className="p-1.5 rounded hover:bg-white/10 active:bg-white/15 text-white/70 hover:text-white transition-colors"
+            className="p-1.5 rounded hover:bg-[var(--header-btn-hover)] active:bg-[var(--header-btn-active)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
           >
             <Minus className="w-3.5 h-3.5" />
           </button>
@@ -126,7 +126,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleSidebar, onOpenSettings 
             onClick={handleMaximize}
             aria-label="Perbesar"
             title="Perbesar"
-            className="p-1.5 rounded hover:bg-white/10 active:bg-white/15 text-white/70 hover:text-white transition-colors"
+            className="p-1.5 rounded hover:bg-[var(--header-btn-hover)] active:bg-[var(--header-btn-active)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
           >
             <Square className="w-3 h-3" />
           </button>
@@ -134,7 +134,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleSidebar, onOpenSettings 
             onClick={handleClose}
             aria-label="Tutup"
             title="Tutup"
-            className="p-1.5 rounded hover:bg-red-600/80 active:bg-red-700 text-white/70 hover:text-white transition-colors"
+            className="p-1.5 rounded hover:bg-red-500 active:bg-red-600 text-[var(--text-secondary)] hover:text-white transition-colors"
           >
             <X className="w-3.5 h-3.5" />
           </button>

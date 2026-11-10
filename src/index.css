@@ -5,6 +5,82 @@
 :root {
   --accent-color: #2563EB;
   --accent-hover: #1D4ED8;
+
+  /* Light Theme (Default when not .dark) */
+  --bg-app: #F3F3F8;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #E8ECF2;
+  --bg-card: #FFFFFF;
+  --bg-input: #FFFFFF;
+  --bg-input-border: #D1D5DB;
+
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --text-muted: #9CA3AF;
+
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-card: #E5E7EB;
+
+  --btn-num-bg: #FFFFFF;
+  --btn-num-hover: #F9FAFB;
+  --btn-num-active: #F3F4F6;
+  --btn-num-text: #111827;
+  --btn-num-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+
+  --btn-op-bg: #EAEFF5;
+  --btn-op-hover: #DFE5EE;
+  --btn-op-active: #D5DBE5;
+  --btn-op-text: #1F2937;
+
+  --header-btn-hover: rgba(0, 0, 0, 0.06);
+  --header-btn-active: rgba(0, 0, 0, 0.1);
+  --header-text: #1F2937;
+
+  --panel-bg: rgba(255, 255, 255, 0.98);
+  --panel-border: rgba(0, 0, 0, 0.1);
+  --panel-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
+  --badge-bg: #E5E7EB;
+  --badge-text: #374151;
+}
+
+html.dark {
+  /* Dark Theme */
+  --bg-app: #17191F;
+  --bg-surface: #20232B;
+  --bg-elevated: #292D37;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-input: rgba(255, 255, 255, 0.05);
+  --bg-input-border: rgba(255, 255, 255, 0.1);
+
+  --text-primary: #F5F7FA;
+  --text-secondary: #9299A8;
+  --text-muted: rgba(255, 255, 255, 0.4);
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-card: rgba(255, 255, 255, 0.1);
+
+  --btn-num-bg: rgba(255, 255, 255, 0.07);
+  --btn-num-hover: rgba(255, 255, 255, 0.14);
+  --btn-num-active: rgba(255, 255, 255, 0.2);
+  --btn-num-text: #FFFFFF;
+  --btn-num-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+  --btn-op-bg: rgba(255, 255, 255, 0.04);
+  --btn-op-hover: rgba(255, 255, 255, 0.1);
+  --btn-op-active: rgba(255, 255, 255, 0.16);
+  --btn-op-text: rgba(255, 255, 255, 0.9);
+
+  --header-btn-hover: rgba(255, 255, 255, 0.1);
+  --header-btn-active: rgba(255, 255, 255, 0.15);
+  --header-text: #FFFFFF;
+
+  --panel-bg: rgba(30, 33, 41, 0.97);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --panel-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+
+  --badge-bg: rgba(255, 255, 255, 0.1);
+  --badge-text: rgba(255, 255, 255, 0.8);
 }
 
 body {
@@ -13,54 +89,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   user-select: none;
   -webkit-user-select: none;
-}
-
-/* Light mode overrides */
-html:not(.dark) body {
-  background-color: #F5F6FA;
-  color: #20232B;
-}
-
-html:not(.dark) header {
-  border-bottom-color: rgba(0, 0, 0, 0.08);
-}
-
-html:not(.dark) header button {
-  color: rgba(0, 0, 0, 0.7);
-}
-
-html:not(.dark) header button:hover {
-  background-color: rgba(0, 0, 0, 0.06);
-  color: rgba(0, 0, 0, 0.9);
-}
-
-html:not(.dark) header span {
-  color: #20232B;
-}
-
-html:not(.dark) .font-semibold.tracking-tight {
-  color: #20232B;
-}
-
-html:not(.dark) .h-12.rounded-lg.bg-white\/\[0\.06\] {
-  background-color: #FFFFFF;
-  color: #20232B;
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-html:not(.dark) .h-12.rounded-lg.bg-white\/\[0\.06\]:hover {
-  background-color: #F1F3F7;
-}
-
-html:not(.dark) .h-12.rounded-lg.bg-white\/\[0\.03\] {
-  background-color: #EDF0F5;
-  color: #333945;
-  border-color: rgba(0, 0, 0, 0.06);
-}
-
-html:not(.dark) .h-12.rounded-lg.bg-white\/\[0\.03\]:hover {
-  background-color: #E2E6EE;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Custom minimal scrollbar */
@@ -74,10 +105,11 @@ html:not(.dark) .h-12.rounded-lg.bg-white\/\[0\.03\]:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--text-muted);
   border-radius: 9999px;
+  opacity: 0.5;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  opacity: 0.8;
 }
