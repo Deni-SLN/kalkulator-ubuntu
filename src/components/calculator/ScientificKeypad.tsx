@@ -1,6 +1,7 @@
 import React from 'react';
 import { Delete } from 'lucide-react';
 import { useCalculatorStore } from '@/stores/calculatorStore';
+import { useSettingsStore } from '@/stores/settingsStore';
 import { AngleMode } from '@/types/calculator';
 
 export const ScientificKeypad: React.FC = () => {
@@ -22,6 +23,9 @@ export const ScientificKeypad: React.FC = () => {
     isHypActive,
     toggleHyp,
   } = useCalculatorStore();
+  const { settings } = useSettingsStore();
+
+  const decimalSeparator = settings.numberFormat === 'id-ID' ? ',' : '.';
 
   const cycleAngleMode = () => {
     const modes: AngleMode[] = ['deg', 'rad', 'grad'];
@@ -192,8 +196,8 @@ export const ScientificKeypad: React.FC = () => {
         <button onClick={() => inputDigit('0')} className={numBtnClass}>
           0
         </button>
-        <button onClick={inputDecimal} className={numBtnClass}>
-          .
+        <button onClick={inputDecimal} className={numBtnClass} title="Decimal point">
+          {decimalSeparator}
         </button>
         <button onClick={calculate} className={accentBtnClass}>
           =

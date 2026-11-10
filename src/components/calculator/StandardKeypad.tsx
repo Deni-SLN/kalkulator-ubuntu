@@ -1,6 +1,7 @@
 import React from 'react';
 import { Delete } from 'lucide-react';
 import { useCalculatorStore } from '@/stores/calculatorStore';
+import { useSettingsStore } from '@/stores/settingsStore';
 
 export const StandardKeypad: React.FC = () => {
   const {
@@ -15,6 +16,9 @@ export const StandardKeypad: React.FC = () => {
     clearAll,
     calculate,
   } = useCalculatorStore();
+  const { settings } = useSettingsStore();
+
+  const decimalSeparator = settings.numberFormat === 'id-ID' ? ',' : '.';
 
   const numBtnClass =
     'h-12 rounded-lg bg-white/[0.06] hover:bg-white/[0.12] active:bg-white/[0.18] text-white font-medium text-lg transition-all shadow-sm flex items-center justify-center border border-white/5 active:scale-[0.98]';
@@ -105,7 +109,7 @@ export const StandardKeypad: React.FC = () => {
         0
       </button>
       <button onClick={inputDecimal} className={numBtnClass} title="Decimal point">
-        .
+        {decimalSeparator}
       </button>
       <button onClick={calculate} className={accentBtnClass} title="Calculate (Enter)">
         =

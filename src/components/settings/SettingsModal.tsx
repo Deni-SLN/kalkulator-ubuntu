@@ -2,7 +2,7 @@ import React from 'react';
 import { useSettingsStore } from '@/stores/settingsStore';
 import { useHistoryStore } from '@/stores/historyStore';
 import { DEFAULT_ACCENT_COLORS } from '@/engine/constants';
-import { ThemeMode, AngleMode, CalculatorMode } from '@/types/calculator';
+import { ThemeMode, AngleMode, CalculatorMode, NumberLocale } from '@/types/calculator';
 import { X, RotateCcw, Palette, Calculator, History as HistoryIcon, Sparkles } from 'lucide-react';
 
 interface SettingsModalProps {
@@ -136,9 +136,22 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
               </div>
             </div>
 
+            {/* Number Formatting */}
+            <div className="flex items-center justify-between">
+              <span>Format Angka (Pemisah)</span>
+              <select
+                value={settings.numberFormat || 'id-ID'}
+                onChange={(e) => updateSettings({ numberFormat: e.target.value as NumberLocale })}
+                className="bg-white/5 border border-white/10 rounded-md px-2 py-1 text-xs text-white focus:outline-none focus:border-dsln-accent"
+              >
+                <option value="id-ID" className="bg-[#1e2129]">Titik . (1.250.000,00)</option>
+                <option value="en-US" className="bg-[#1e2129]">Koma , (1,250,000.00)</option>
+              </select>
+            </div>
+
             {/* Thousands Separator */}
             <div className="flex items-center justify-between">
-              <span>Thousands Separator (1,000)</span>
+              <span>Pemisah Ribuan ({settings.numberFormat === 'en-US' ? '1,000' : '1.000'})</span>
               <input
                 type="checkbox"
                 checked={settings.thousandsSeparator}

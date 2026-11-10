@@ -12,11 +12,17 @@ export const Display: React.FC = () => {
   const formattedMainValue = formatNumber(
     display,
     settings.thousandsSeparator,
-    settings.decimalPrecision
+    settings.decimalPrecision,
+    settings.numberFormat || 'id-ID'
   );
 
   const formattedPreview = previewResult
-    ? formatNumber(previewResult, settings.thousandsSeparator, settings.decimalPrecision)
+    ? formatNumber(
+        previewResult,
+        settings.thousandsSeparator,
+        settings.decimalPrecision,
+        settings.numberFormat || 'id-ID'
+      )
     : null;
 
   const handleCopy = () => {
@@ -46,7 +52,7 @@ export const Display: React.FC = () => {
 
       {/* Expression history / secondary display */}
       <div className="h-6 text-sm text-white/50 font-mono tracking-wide truncate">
-        {formatExpression(expression)}
+        {formatExpression(expression, settings.numberFormat || 'id-ID')}
       </div>
 
       {/* Live preview line (if typing binary op) */}

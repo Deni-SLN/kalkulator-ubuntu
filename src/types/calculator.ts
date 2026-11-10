@@ -17,6 +17,7 @@ export interface HistoryItem {
 }
 
 export type ThemeMode = 'dark' | 'light' | 'system';
+export type NumberLocale = 'id-ID' | 'en-US';
 
 export interface AppSettings {
   theme: ThemeMode;
@@ -25,6 +26,7 @@ export interface AppSettings {
   animationsEnabled: boolean;
   decimalPrecision: number;
   thousandsSeparator: boolean;
+  numberFormat: NumberLocale;
   angleMode: AngleMode;
   defaultMode: CalculatorMode;
   historyEnabled: boolean;

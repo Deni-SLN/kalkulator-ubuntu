@@ -24,6 +24,13 @@ export function preprocessExpression(expr: string, angleMode: AngleMode = 'deg')
     .replace(/−/g, '-')
     .replace(/π/g, 'pi');
 
+  // If thousand dots are present (e.g. 1.000.000), strip dots if followed by 3 digits and another dot or end of number
+  cleaned = cleaned.replace(/(\d{1,3})\.(\d{3})\.(\d{3})/g, '$1$2$3');
+  cleaned = cleaned.replace(/(\d{1,3})\.(\d{3})(?!\d|\.)/g, '$1$2');
+
+  // Handle Indonesian comma decimal format: e.g. "12,5" -> "12.5"
+  cleaned = cleaned.replace(/(\d+),(\d+)/g, '$1.$2');
+
   // Handle percentage: e.g., "1000 + 25%" -> "1000 + (1000 * 25 / 100)"
   // or "1000 - 20%" -> "1000 - (1000 * 20 / 100)"
   // or "100 * 50%" -> "100 * (50 / 100)"

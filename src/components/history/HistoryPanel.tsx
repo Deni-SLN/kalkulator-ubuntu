@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistoryStore } from '@/stores/historyStore';
 import { useCalculatorStore } from '@/stores/calculatorStore';
+import { useSettingsStore } from '@/stores/settingsStore';
 import { formatNumber, formatExpression } from '@/engine/formatter';
 import {
   X,
@@ -26,6 +27,7 @@ export const HistoryPanel: React.FC = () => {
   } = useHistoryStore();
 
   const { setExpressionAndResult } = useCalculatorStore();
+  const { settings } = useSettingsStore();
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [filterFavorite, setFilterFavorite] = useState(false);
 
@@ -164,7 +166,7 @@ export const HistoryPanel: React.FC = () => {
 
               {/* Expression */}
               <div className="text-xs text-white/60 font-mono truncate">
-                {formatExpression(item.expression)}
+                {formatExpression(item.expression, settings.numberFormat)}
               </div>
 
               {/* Result */}
@@ -173,7 +175,9 @@ export const HistoryPanel: React.FC = () => {
                 className="text-lg font-semibold text-white tracking-tight cursor-pointer hover:text-dsln-accent transition flex items-center justify-end space-x-1"
                 title="Click to reuse"
               >
-                <span>= {formatNumber(item.result)}</span>
+                <span>
+                  = {formatNumber(item.result, settings.thousandsSeparator, settings.decimalPrecision, settings.numberFormat)}
+                </span>
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition" />
               </div>
             </div>

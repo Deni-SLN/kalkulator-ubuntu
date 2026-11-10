@@ -11,6 +11,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   animationsEnabled: true,
   decimalPrecision: 10,
   thousandsSeparator: true,
+  numberFormat: 'id-ID',
   angleMode: 'deg',
   defaultMode: 'standard',
   historyEnabled: true,
