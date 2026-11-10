@@ -152,10 +152,10 @@ export const ProgrammerView: React.FC = () => {
         <button
           onClick={cycleWordSize}
           className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-white/10 hover:bg-white/15 text-white text-xs font-mono font-semibold transition"
-          title="Click to cycle word size: QWORD (64) -> DWORD (32) -> WORD (16) -> BYTE (8)"
+          title="Klik untuk mengganti ukuran kata: QWORD (64) -> DWORD (32) -> WORD (16) -> BYTE (8)"
         >
           <Cpu className="w-3.5 h-3.5 text-dsln-accent" />
-          <span>{wordSize} ({WORD_SIZE_BITS[wordSize]} bits)</span>
+          <span>{wordSize} ({WORD_SIZE_BITS[wordSize]} bit)</span>
         </button>
 
         {pendingOp && (
@@ -211,7 +211,7 @@ export const ProgrammerView: React.FC = () => {
                     ? 'bg-dsln-accent text-white shadow-sm'
                     : 'bg-white/5 text-white/30 hover:bg-white/10 hover:text-white/70'
                 } ${actualBitIndex % 4 === 0 && actualBitIndex !== 0 ? 'mr-1' : ''}`}
-                title={`Bit ${actualBitIndex}: ${isOn ? '1' : '0'} (click to toggle)`}
+                title={`Bit ${actualBitIndex}: ${isOn ? '1' : '0'} (klik untuk beralih)`}
               >
                 {isOn ? '1' : '0'}
               </button>
@@ -223,22 +223,22 @@ export const ProgrammerView: React.FC = () => {
       {/* Programmer Keypad */}
       <div className="grid grid-cols-6 gap-1 sm:gap-1.5 flex-1">
         {/* Row 1: Bitwise logic */}
-        <button onClick={() => handleOp('Lsh')} className={opBtnClass} title="Left Shift">
+        <button onClick={() => handleOp('Lsh')} className={opBtnClass} title="Geser Kiri (Left Shift)">
           Lsh
         </button>
-        <button onClick={() => handleOp('Rsh')} className={opBtnClass} title="Right Shift">
+        <button onClick={() => handleOp('Rsh')} className={opBtnClass} title="Geser Kanan (Right Shift)">
           Rsh
         </button>
-        <button onClick={() => handleOp('AND')} className={opBtnClass} title="Bitwise AND">
+        <button onClick={() => handleOp('AND')} className={opBtnClass} title="Operasi Bitwise AND">
           AND
         </button>
-        <button onClick={() => handleOp('OR')} className={opBtnClass} title="Bitwise OR">
+        <button onClick={() => handleOp('OR')} className={opBtnClass} title="Operasi Bitwise OR">
           OR
         </button>
-        <button onClick={() => handleOp('XOR')} className={opBtnClass} title="Bitwise XOR">
+        <button onClick={() => handleOp('XOR')} className={opBtnClass} title="Operasi Bitwise XOR">
           XOR
         </button>
-        <button onClick={handleNot} className={opBtnClass} title="Bitwise NOT">
+        <button onClick={handleNot} className={opBtnClass} title="Operasi Bitwise NOT">
           NOT
         </button>
 
@@ -257,16 +257,16 @@ export const ProgrammerView: React.FC = () => {
         >
           B
         </button>
-        <button onClick={() => handleOp('NAND')} className={opBtnClass} title="Bitwise NAND">
+        <button onClick={() => handleOp('NAND')} className={opBtnClass} title="Operasi Bitwise NAND">
           NAND
         </button>
-        <button onClick={() => handleOp('NOR')} className={opBtnClass} title="Bitwise NOR">
+        <button onClick={() => handleOp('NOR')} className={opBtnClass} title="Operasi Bitwise NOR">
           NOR
         </button>
-        <button onClick={handleClear} className={opBtnClass} title="Clear All">
+        <button onClick={handleClear} className={opBtnClass} title="Bersihkan Semua (Clear)">
           C
         </button>
-        <button onClick={handleBackspace} className={opBtnClass} title="Backspace">
+        <button onClick={handleBackspace} className={opBtnClass} title="Hapus Terakhir (Backspace)">
           <Delete className="w-4 h-4 text-white/80" />
         </button>
 

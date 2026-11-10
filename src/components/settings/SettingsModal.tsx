@@ -2,7 +2,7 @@ import React from 'react';
 import { useSettingsStore } from '@/stores/settingsStore';
 import { useHistoryStore } from '@/stores/historyStore';
 import { DEFAULT_ACCENT_COLORS } from '@/engine/constants';
-import { ThemeMode, AngleMode, CalculatorMode, NumberLocale } from '@/types/calculator';
+import { AngleMode, CalculatorMode, NumberLocale } from '@/types/calculator';
 import { X, RotateCcw, Palette, Calculator, History as HistoryIcon, Sparkles } from 'lucide-react';
 
 interface SettingsModalProps {
@@ -23,7 +23,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
         <div className="px-5 py-4 border-b border-white/10 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Palette className="w-4 h-4 text-dsln-accent" />
-            <h2 className="font-semibold text-base">Settings</h2>
+            <h2 className="font-semibold text-base">Pengaturan</h2>
           </div>
           <button
             onClick={onClose}
@@ -39,24 +39,28 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
           <div className="space-y-3">
             <div className="flex items-center space-x-2 text-xs font-semibold text-white/50 tracking-wider uppercase">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Appearance</span>
+              <span>Tampilan</span>
             </div>
 
             {/* Theme */}
             <div className="flex items-center justify-between">
-              <span>Theme Mode</span>
+              <span>Mode Tema</span>
               <div className="flex items-center bg-white/5 rounded-lg p-0.5 border border-white/10">
-                {(['dark', 'light', 'system'] as ThemeMode[]).map((t) => (
+                {([
+                  { id: 'dark', label: 'Gelap' },
+                  { id: 'light', label: 'Terang' },
+                  { id: 'system', label: 'Sistem' },
+                ] as const).map((t) => (
                   <button
-                    key={t}
-                    onClick={() => updateSettings({ theme: t })}
+                    key={t.id}
+                    onClick={() => updateSettings({ theme: t.id })}
                     className={`px-3 py-1 text-xs rounded-md capitalize font-medium transition ${
-                      settings.theme === t
+                      settings.theme === t.id
                         ? 'bg-dsln-accent text-white shadow-sm'
                         : 'text-white/60 hover:text-white'
                     }`}
                   >
-                    {t}
+                    {t.label}
                   </button>
                 ))}
               </div>
@@ -64,7 +68,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
             {/* Accent Color */}
             <div className="space-y-2">
-              <span className="text-xs text-white/80">Accent Color</span>
+              <span className="text-xs text-white/80">Warna Aksen</span>
               <div className="flex flex-wrap gap-2">
                 {DEFAULT_ACCENT_COLORS.map((col) => (
                   <button
@@ -84,7 +88,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
             {/* Animation Toggle */}
             <div className="flex items-center justify-between pt-1">
-              <span>Enable Animations</span>
+              <span>Aktifkan Animasi</span>
               <input
                 type="checkbox"
                 checked={settings.animationsEnabled}
@@ -100,28 +104,28 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
           <div className="space-y-3">
             <div className="flex items-center space-x-2 text-xs font-semibold text-white/50 tracking-wider uppercase">
               <Calculator className="w-3.5 h-3.5" />
-              <span>Calculation</span>
+              <span>Kalkulasi</span>
             </div>
 
             {/* Default Mode */}
             <div className="flex items-center justify-between">
-              <span>Default Mode</span>
+              <span>Mode Asali</span>
               <select
                 value={settings.defaultMode}
                 onChange={(e) => updateSettings({ defaultMode: e.target.value as CalculatorMode })}
                 className="bg-white/5 border border-white/10 rounded-md px-2 py-1 text-xs text-white focus:outline-none focus:border-dsln-accent"
               >
-                <option value="standard" className="bg-[#1e2129]">Standard</option>
-                <option value="scientific" className="bg-[#1e2129]">Scientific</option>
-                <option value="programmer" className="bg-[#1e2129]">Programmer</option>
-                <option value="financial" className="bg-[#1e2129]">Financial</option>
-                <option value="converter" className="bg-[#1e2129]">Converter</option>
+                <option value="standard" className="bg-[#1e2129]">Standar</option>
+                <option value="scientific" className="bg-[#1e2129]">Ilmiah</option>
+                <option value="programmer" className="bg-[#1e2129]">Pemrogram</option>
+                <option value="financial" className="bg-[#1e2129]">Finansial</option>
+                <option value="converter" className="bg-[#1e2129]">Konverter</option>
               </select>
             </div>
 
             {/* Angle Mode */}
             <div className="flex items-center justify-between">
-              <span>Default Angle Mode</span>
+              <span>Mode Sudut Asali</span>
               <div className="flex items-center bg-white/5 rounded-lg p-0.5 border border-white/10">
                 {(['deg', 'rad', 'grad'] as AngleMode[]).map((a) => (
                   <button
@@ -165,7 +169,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
             {/* Decimal Precision */}
             <div className="flex items-center justify-between">
-              <span>Decimal Precision ({settings.decimalPrecision})</span>
+              <span>Presisi Desimal ({settings.decimalPrecision})</span>
               <input
                 type="range"
                 min="2"
@@ -183,11 +187,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
           <div className="space-y-3">
             <div className="flex items-center space-x-2 text-xs font-semibold text-white/50 tracking-wider uppercase">
               <HistoryIcon className="w-3.5 h-3.5" />
-              <span>History</span>
+              <span>Riwayat</span>
             </div>
 
             <div className="flex items-center justify-between">
-              <span>Record History</span>
+              <span>Rekam Riwayat Kalkulasi</span>
               <input
                 type="checkbox"
                 checked={settings.historyEnabled}
@@ -197,27 +201,27 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
             </div>
 
             <div className="flex items-center justify-between">
-              <span>Max Entries</span>
+              <span>Batas Maksimum Entri</span>
               <select
                 value={settings.maxHistoryEntries}
                 onChange={(e) => updateSettings({ maxHistoryEntries: Number(e.target.value) })}
                 className="bg-white/5 border border-white/10 rounded-md px-2 py-1 text-xs text-white focus:outline-none"
               >
-                <option value="50" className="bg-[#1e2129]">50 entries</option>
-                <option value="100" className="bg-[#1e2129]">100 entries</option>
-                <option value="200" className="bg-[#1e2129]">200 entries</option>
+                <option value="50" className="bg-[#1e2129]">50 entri</option>
+                <option value="100" className="bg-[#1e2129]">100 entri</option>
+                <option value="200" className="bg-[#1e2129]">200 entri</option>
               </select>
             </div>
 
             <button
               onClick={() => {
-                if (confirm('Clear all calculation history?')) {
+                if (confirm('Hapus semua riwayat perhitungan tersimpan?')) {
                   clearHistory();
                 }
               }}
               className="text-xs text-red-400 hover:text-red-300 transition underline underline-offset-2"
             >
-              Clear All Saved History
+              Hapus Semua Riwayat Tersimpan
             </button>
           </div>
         </div>
@@ -229,13 +233,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
             className="flex items-center space-x-1.5 text-xs text-white/50 hover:text-white transition"
           >
             <RotateCcw className="w-3.5 h-3.5" />
-            <span>Reset Defaults</span>
+            <span>Kembalikan Asali</span>
           </button>
           <button
             onClick={onClose}
             className="px-4 py-1.5 rounded-md bg-dsln-accent hover:opacity-90 text-white font-medium text-xs transition"
           >
-            Done
+            Selesai
           </button>
         </div>
       </div>

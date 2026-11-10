@@ -95,7 +95,7 @@ export const ConverterView: React.FC = () => {
           }`}
         >
           <Scale className="w-3.5 h-3.5" />
-          <span>Unit Converter</span>
+          <span>Konverter Satuan</span>
         </button>
         <button
           onClick={() => setActiveTab('currency')}
@@ -104,7 +104,7 @@ export const ConverterView: React.FC = () => {
           }`}
         >
           <DollarSign className="w-3.5 h-3.5" />
-          <span>Currency Converter</span>
+          <span>Konverter Mata Uang</span>
         </button>
       </div>
 
@@ -113,7 +113,7 @@ export const ConverterView: React.FC = () => {
         <div className="flex-1 flex flex-col space-y-3 overflow-y-auto pr-1">
           {/* Category Dropdown / Scrollbar */}
           <div className="flex items-center space-x-2">
-            <span className="text-xs text-white/50 uppercase font-semibold">Category:</span>
+            <span className="text-xs text-white/50 uppercase font-semibold">Kategori:</span>
             <select
               value={category}
               onChange={(e) => handleCategoryChange(e.target.value as UnitCategory)}
@@ -132,7 +132,7 @@ export const ConverterView: React.FC = () => {
             {/* From Input */}
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs text-white/60">
-                <span>From</span>
+                <span>Dari</span>
                 <select
                   value={fromUnit}
                   onChange={(e) => setFromUnit(e.target.value)}
@@ -158,7 +158,7 @@ export const ConverterView: React.FC = () => {
               <button
                 onClick={handleSwapUnits}
                 className="p-1.5 rounded-full bg-white/10 hover:bg-dsln-accent text-white transition active:scale-95 shadow-sm"
-                title="Swap units"
+                title="Tukar satuan"
               >
                 <ArrowLeftRight className="w-4 h-4" />
               </button>
@@ -167,7 +167,7 @@ export const ConverterView: React.FC = () => {
             {/* To Output */}
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs text-white/60">
-                <span>To</span>
+                <span>Ke</span>
                 <select
                   value={toUnit}
                   onChange={(e) => setToUnit(e.target.value)}
@@ -202,7 +202,7 @@ export const ConverterView: React.FC = () => {
               {rateData.isCached ? (
                 <>
                   <WifiOff className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Kurs Cached ({rateData.updatedAt})</span>
+                  <span>Kurs Tersimpan ({rateData.updatedAt})</span>
                 </>
               ) : (
                 <>
@@ -217,7 +217,7 @@ export const ConverterView: React.FC = () => {
               className="flex items-center space-x-1 text-dsln-accent hover:underline disabled:opacity-50"
             >
               <RefreshCw className={`w-3 h-3 ${isRefreshing ? 'animate-spin' : ''}`} />
-              <span>{isRefreshing ? 'Memperbarui...' : 'Update Kurs'}</span>
+              <span>{isRefreshing ? 'Memperbarui...' : 'Perbarui Kurs'}</span>
             </button>
           </div>
 
@@ -226,7 +226,7 @@ export const ConverterView: React.FC = () => {
             {/* From Currency */}
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs text-white/60">
-                <span>From</span>
+                <span>Dari</span>
                 <select
                   value={fromCurrency}
                   onChange={(e) => setFromCurrency(e.target.value)}
@@ -252,7 +252,7 @@ export const ConverterView: React.FC = () => {
               <button
                 onClick={handleSwapCurrencies}
                 className="p-1.5 rounded-full bg-white/10 hover:bg-dsln-accent text-white transition active:scale-95 shadow-sm"
-                title="Swap currencies"
+                title="Tukar mata uang"
               >
                 <ArrowLeftRight className="w-4 h-4" />
               </button>
@@ -261,7 +261,7 @@ export const ConverterView: React.FC = () => {
             {/* To Currency */}
             <div className="space-y-1">
               <div className="flex justify-between items-center text-xs text-white/60">
-                <span>To</span>
+                <span>Ke</span>
                 <select
                   value={toCurrency}
                   onChange={(e) => setToCurrency(e.target.value)}

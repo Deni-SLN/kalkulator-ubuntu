@@ -53,11 +53,11 @@ export const Header: React.FC<HeaderProps> = ({ onToggleSidebar, onOpenSettings 
   };
 
   const modeLabels: Record<string, string> = {
-    standard: 'Standard',
-    scientific: 'Scientific',
-    programmer: 'Programmer',
-    financial: 'Financial',
-    converter: 'Converter',
+    standard: 'Standar',
+    scientific: 'Ilmiah',
+    programmer: 'Pemrogram',
+    financial: 'Finansial',
+    converter: 'Konverter',
   };
 
   return (
@@ -66,21 +66,22 @@ export const Header: React.FC<HeaderProps> = ({ onToggleSidebar, onOpenSettings 
       <div className="flex items-center space-x-2">
         <button
           onClick={onToggleSidebar}
-          aria-label="Toggle navigation drawer"
+          aria-label="Buka menu navigasi"
+          title="Menu Navigasi"
           className="p-1.5 rounded-md hover:bg-white/10 active:bg-white/15 transition-colors text-white/80 hover:text-white"
         >
           <Menu className="w-4 h-4" />
         </button>
 
         <span className="font-semibold text-sm tracking-wide text-white/90">
-          {modeLabels[mode] || 'Calculator'}
+          {modeLabels[mode] || 'Kalkulator'}
         </span>
 
         {mode === 'scientific' && (
           <button
             onClick={cycleAngleMode}
             className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 active:bg-white/25 text-white/80 uppercase font-semibold transition"
-            title="Click to switch DEG / RAD / GRAD"
+            title="Klik untuk beralih mode sudut: DEG / RAD / GRAD"
           >
             {angleMode}
           </button>
@@ -91,8 +92,8 @@ export const Header: React.FC<HeaderProps> = ({ onToggleSidebar, onOpenSettings 
       <div className="flex items-center space-x-1">
         <button
           onClick={() => setHistoryOpen(!isHistoryOpen)}
-          aria-label="Calculation History (Ctrl+H)"
-          title="History (Ctrl+H)"
+          aria-label="Riwayat Perhitungan (Ctrl+H)"
+          title="Riwayat (Ctrl+H)"
           className={`p-1.5 rounded-md transition-colors ${
             isHistoryOpen
               ? 'bg-dsln-accent text-white'
@@ -104,8 +105,8 @@ export const Header: React.FC<HeaderProps> = ({ onToggleSidebar, onOpenSettings 
 
         <button
           onClick={onOpenSettings}
-          aria-label="Settings (Ctrl+,)"
-          title="Settings (Ctrl+,)"
+          aria-label="Pengaturan (Ctrl+,)"
+          title="Pengaturan (Ctrl+,)"
           className="p-1.5 rounded-md text-white/80 hover:bg-white/10 active:bg-white/15 hover:text-white transition-colors"
         >
           <Settings className="w-4 h-4" />
@@ -115,21 +116,24 @@ export const Header: React.FC<HeaderProps> = ({ onToggleSidebar, onOpenSettings 
         <div className="flex items-center pl-1 border-l border-white/10 space-x-0.5">
           <button
             onClick={handleMinimize}
-            aria-label="Minimize"
+            aria-label="Perkecil"
+            title="Perkecil"
             className="p-1.5 rounded hover:bg-white/10 active:bg-white/15 text-white/70 hover:text-white transition-colors"
           >
             <Minus className="w-3.5 h-3.5" />
           </button>
           <button
             onClick={handleMaximize}
-            aria-label="Maximize"
+            aria-label="Perbesar"
+            title="Perbesar"
             className="p-1.5 rounded hover:bg-white/10 active:bg-white/15 text-white/70 hover:text-white transition-colors"
           >
             <Square className="w-3 h-3" />
           </button>
           <button
             onClick={handleClose}
-            aria-label="Close"
+            aria-label="Tutup"
+            title="Tutup"
             className="p-1.5 rounded hover:bg-red-600/80 active:bg-red-700 text-white/70 hover:text-white transition-colors"
           >
             <X className="w-3.5 h-3.5" />

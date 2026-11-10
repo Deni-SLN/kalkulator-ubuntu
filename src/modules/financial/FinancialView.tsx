@@ -70,7 +70,7 @@ export const FinancialView: React.FC = () => {
           }`}
         >
           <TrendingUp className="w-3.5 h-3.5" />
-          <span>Stock</span>
+          <span>Saham</span>
         </button>
         <button
           onClick={() => setActiveTab('loan')}
@@ -79,7 +79,7 @@ export const FinancialView: React.FC = () => {
           }`}
         >
           <Home className="w-3.5 h-3.5" />
-          <span>Loan / KPR</span>
+          <span>Pinjaman/KPR</span>
         </button>
         <button
           onClick={() => setActiveTab('investment')}
@@ -88,7 +88,7 @@ export const FinancialView: React.FC = () => {
           }`}
         >
           <PiggyBank className="w-3.5 h-3.5" />
-          <span>Investment</span>
+          <span>Investasi</span>
         </button>
         <button
           onClick={() => setActiveTab('business')}
@@ -97,7 +97,7 @@ export const FinancialView: React.FC = () => {
           }`}
         >
           <Briefcase className="w-3.5 h-3.5" />
-          <span>Business</span>
+          <span>Bisnis</span>
         </button>
       </div>
 
@@ -108,11 +108,11 @@ export const FinancialView: React.FC = () => {
           <div className="space-y-3">
             <div className="bg-white/[0.03] border border-white/10 rounded-xl p-3 space-y-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-dsln-accent">
-                Average Down Calculator
+                Kalkulator Average Down
               </span>
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div>
-                  <label className="text-white/60 block mb-1">Initial Shares (Lot/Lembar)</label>
+                  <label className="text-white/60 block mb-1">Jumlah Saham Awal (Lot/Lembar)</label>
                   <input
                     type="number"
                     value={initShares}
@@ -121,7 +121,7 @@ export const FinancialView: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Initial Buy Price</label>
+                  <label className="text-white/60 block mb-1">Harga Beli Awal</label>
                   <input
                     type="number"
                     value={initPrice}
@@ -130,7 +130,7 @@ export const FinancialView: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Additional Shares</label>
+                  <label className="text-white/60 block mb-1">Jumlah Saham Tambahan</label>
                   <input
                     type="number"
                     value={addShares}
@@ -139,7 +139,7 @@ export const FinancialView: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Additional Buy Price</label>
+                  <label className="text-white/60 block mb-1">Harga Beli Tambahan</label>
                   <input
                     type="number"
                     value={addPrice}
@@ -152,15 +152,15 @@ export const FinancialView: React.FC = () => {
               {/* Result Summary Card */}
               <div className="p-3 rounded-lg bg-black/30 border border-white/10 grid grid-cols-3 gap-2 text-center">
                 <div>
-                  <div className="text-[10px] text-white/50">Total Shares</div>
+                  <div className="text-[10px] text-white/50">Total Saham</div>
                   <div className="text-sm font-bold text-white font-mono">{fmtInt(avgDownResult.totalShares)}</div>
                 </div>
                 <div>
-                  <div className="text-[10px] text-white/50">Total Investment</div>
+                  <div className="text-[10px] text-white/50">Total Investasi</div>
                   <div className="text-sm font-bold text-white font-mono">{fmtInt(avgDownResult.totalInvestment)}</div>
                 </div>
                 <div>
-                  <div className="text-[10px] text-dsln-accent">Average Price</div>
+                  <div className="text-[10px] text-dsln-accent">Harga Rata-Rata (Avg)</div>
                   <div className="text-sm font-bold text-dsln-accent font-mono">{fmt(avgDownResult.averagePrice)}</div>
                 </div>
               </div>
@@ -173,11 +173,11 @@ export const FinancialView: React.FC = () => {
           <div className="space-y-3">
             <div className="bg-white/[0.03] border border-white/10 rounded-xl p-3 space-y-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-dsln-accent">
-                Loan & KPR Simulator
+                Simulasi Pinjaman & KPR
               </span>
               <div className="space-y-2 text-xs">
                 <div>
-                  <label className="text-white/60 block mb-1">Total Loan Amount (Plafon Pinjaman)</label>
+                  <label className="text-white/60 block mb-1">Plafon Pinjaman</label>
                   <input
                     type="number"
                     step="1000000"
@@ -188,7 +188,7 @@ export const FinancialView: React.FC = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="text-white/60 block mb-1">Interest Rate / Thn (%)</label>
+                    <label className="text-white/60 block mb-1">Suku Bunga / Tahun (%)</label>
                     <input
                       type="number"
                       step="0.1"
@@ -198,7 +198,7 @@ export const FinancialView: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="text-white/60 block mb-1">Tenure (Years)</label>
+                    <label className="text-white/60 block mb-1">Jangka Waktu (Tahun)</label>
                     <input
                       type="number"
                       value={loanTenureYears}
@@ -212,15 +212,15 @@ export const FinancialView: React.FC = () => {
               {/* Loan Result Card */}
               <div className="p-3 rounded-lg bg-black/30 border border-white/10 space-y-2">
                 <div className="flex justify-between items-center pb-1 border-b border-white/10">
-                  <span className="text-xs text-dsln-accent font-semibold">Monthly Installment (Cicilan/Bulan)</span>
+                  <span className="text-xs text-dsln-accent font-semibold">Cicilan per Bulan</span>
                   <span className="text-base font-bold text-dsln-accent font-mono">{fmtInt(loanResult.monthlyInstallment)}</span>
                 </div>
                 <div className="flex justify-between text-xs text-white/70">
-                  <span>Total Interest Paid:</span>
+                  <span>Total Bunga Dibayarkan:</span>
                   <span className="font-mono text-white">{fmtInt(loanResult.totalInterest)}</span>
                 </div>
                 <div className="flex justify-between text-xs text-white/70">
-                  <span>Total Payment (Pokok + Bunga):</span>
+                  <span>Total Pembayaran (Pokok + Bunga):</span>
                   <span className="font-mono text-white">{fmtInt(loanResult.totalPayment)}</span>
                 </div>
               </div>
@@ -233,11 +233,11 @@ export const FinancialView: React.FC = () => {
           <div className="space-y-3">
             <div className="bg-white/[0.03] border border-white/10 rounded-xl p-3 space-y-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-dsln-accent">
-                Compound Interest & Growth
+                Bunga Majemuk & Pertumbuhan Investasi
               </span>
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div>
-                  <label className="text-white/60 block mb-1">Initial Deposit</label>
+                  <label className="text-white/60 block mb-1">Setoran Awal</label>
                   <input
                     type="number"
                     value={invPrincipal}
@@ -246,7 +246,7 @@ export const FinancialView: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Monthly Deposit</label>
+                  <label className="text-white/60 block mb-1">Setoran Rutin Bulanan</label>
                   <input
                     type="number"
                     value={invMonthly}
@@ -255,7 +255,7 @@ export const FinancialView: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Annual Return (%)</label>
+                  <label className="text-white/60 block mb-1">Estimasi Imbal Hasil / Thn (%)</label>
                   <input
                     type="number"
                     step="0.5"
@@ -265,7 +265,7 @@ export const FinancialView: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Period (Years)</label>
+                  <label className="text-white/60 block mb-1">Jangka Waktu (Tahun)</label>
                   <input
                     type="number"
                     value={invYears}
@@ -278,15 +278,15 @@ export const FinancialView: React.FC = () => {
               {/* Investment Result Card */}
               <div className="p-3 rounded-lg bg-black/30 border border-white/10 space-y-2">
                 <div className="flex justify-between items-center pb-1 border-b border-white/10">
-                  <span className="text-xs text-green-400 font-semibold">Future Value (Hasil Akhir)</span>
+                  <span className="text-xs text-green-400 font-semibold">Nilai Akhir (Future Value)</span>
                   <span className="text-base font-bold text-green-400 font-mono">{fmtInt(invResult.futureValue)}</span>
                 </div>
                 <div className="flex justify-between text-xs text-white/70">
-                  <span>Total Capital Deposited:</span>
+                  <span>Total Modal Disetor:</span>
                   <span className="font-mono text-white">{fmtInt(invResult.totalDeposited)}</span>
                 </div>
                 <div className="flex justify-between text-xs text-white/70">
-                  <span>Total Interest Earned (Keuntungan):</span>
+                  <span>Total Keuntungan Bunga:</span>
                   <span className="font-mono text-green-300">+{fmtInt(invResult.totalInterest)}</span>
                 </div>
               </div>
@@ -299,11 +299,11 @@ export const FinancialView: React.FC = () => {
           <div className="space-y-3">
             <div className="bg-white/[0.03] border border-white/10 rounded-xl p-3 space-y-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-dsln-accent">
-                Profit Margin & Markup
+                Margin Laba & Markup
               </span>
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div>
-                  <label className="text-white/60 block mb-1">Revenue / Selling Price</label>
+                  <label className="text-white/60 block mb-1">Pendapatan / Harga Jual</label>
                   <input
                     type="number"
                     value={bizRevenue}
@@ -312,7 +312,7 @@ export const FinancialView: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-white/60 block mb-1">Cost of Goods (HPP / Biaya)</label>
+                  <label className="text-white/60 block mb-1">Harga Pokok Penjualan (HPP / Biaya)</label>
                   <input
                     type="number"
                     value={bizCost}
@@ -325,11 +325,11 @@ export const FinancialView: React.FC = () => {
               {/* Business Result Card */}
               <div className="p-3 rounded-lg bg-black/30 border border-white/10 grid grid-cols-3 gap-2 text-center">
                 <div>
-                  <div className="text-[10px] text-white/50">Gross Profit</div>
+                  <div className="text-[10px] text-white/50">Laba Kotor</div>
                   <div className="text-sm font-bold text-white font-mono">{fmtInt(bizResult.profit)}</div>
                 </div>
                 <div>
-                  <div className="text-[10px] text-dsln-accent">Profit Margin</div>
+                  <div className="text-[10px] text-dsln-accent">Margin Laba</div>
                   <div className="text-sm font-bold text-dsln-accent font-mono">{bizResult.profitMargin.toFixed(1)}%</div>
                 </div>
                 <div>

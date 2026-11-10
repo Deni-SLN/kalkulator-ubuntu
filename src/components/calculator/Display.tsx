@@ -44,7 +44,7 @@ export const Display: React.FC = () => {
       {/* Copy button indicator */}
       <button
         onClick={handleCopy}
-        title="Copy result (Ctrl+C)"
+        title="Salin hasil (Ctrl+C)"
         className="absolute top-2 left-4 p-1.5 rounded-md bg-white/5 hover:bg-white/15 opacity-0 group-hover:opacity-100 transition-all text-white/60 hover:text-white"
       >
         {copied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
@@ -64,7 +64,15 @@ export const Display: React.FC = () => {
       {error && (
         <div className="flex items-center justify-end space-x-1.5 text-red-400 text-sm font-medium py-1 animate-pulse">
           <AlertCircle className="w-4 h-4" />
-          <span>{error}</span>
+          <span>
+            {error === 'Cannot divide by zero'
+              ? 'Tidak dapat membagi dengan nol'
+              : error === 'Invalid Expression'
+              ? 'Ekspresi Tidak Valid'
+              : error === 'Empty expression'
+              ? 'Ekspresi Kosong'
+              : error}
+          </span>
         </div>
       )}
 

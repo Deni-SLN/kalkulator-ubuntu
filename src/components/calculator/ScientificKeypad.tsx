@@ -52,7 +52,7 @@ export const ScientificKeypad: React.FC = () => {
         <button
           onClick={cycleAngleMode}
           className="h-8 rounded bg-white/10 hover:bg-white/20 active:bg-white/25 text-white/90 text-xs font-semibold uppercase font-mono transition"
-          title="Switch Angle Mode: DEG / RAD / GRAD"
+          title="Ganti Mode Sudut: DEG / RAD / GRAD"
         >
           {angleMode}
         </button>
@@ -61,7 +61,7 @@ export const ScientificKeypad: React.FC = () => {
           className={`h-8 rounded text-xs font-semibold uppercase transition ${
             isSecondActive ? 'bg-dsln-accent text-white' : 'bg-white/10 hover:bg-white/20 text-white/90'
           }`}
-          title="2nd function toggle"
+          title="Beralih fungsi sekunder (2nd)"
         >
           2nd
         </button>
@@ -70,7 +70,7 @@ export const ScientificKeypad: React.FC = () => {
           className={`h-8 rounded text-xs font-semibold uppercase transition ${
             isHypActive ? 'bg-dsln-accent text-white' : 'bg-white/10 hover:bg-white/20 text-white/90'
           }`}
-          title="Hyperbolic function toggle"
+          title="Beralih fungsi hiperbolik (hyp)"
         >
           hyp
         </button>
@@ -187,19 +187,19 @@ export const ScientificKeypad: React.FC = () => {
         </button>
 
         {/* Row 7 */}
-        <button onClick={backspace} className={fnBtnClass} title="Backspace">
+        <button onClick={backspace} className={fnBtnClass} title="Hapus Terakhir (Backspace)">
           <Delete className="w-4 h-4 text-white/80" />
         </button>
-        <button onClick={negate} className={opBtnClass}>
+        <button onClick={negate} className={opBtnClass} title="Positif/Negatif (+/-)">
           +/-
         </button>
         <button onClick={() => inputDigit('0')} className={numBtnClass}>
           0
         </button>
-        <button onClick={inputDecimal} className={numBtnClass} title="Decimal point">
+        <button onClick={inputDecimal} className={numBtnClass} title="Titik desimal">
           {decimalSeparator}
         </button>
-        <button onClick={calculate} className={accentBtnClass}>
+        <button onClick={calculate} className={accentBtnClass} title="Hitung Hasil (Enter)">
           =
         </button>
       </div>

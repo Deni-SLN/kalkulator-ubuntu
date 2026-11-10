@@ -32,30 +32,30 @@ export const StandardKeypad: React.FC = () => {
   return (
     <div className="grid grid-cols-4 gap-1.5 p-3 flex-1 select-none">
       {/* Row 0 */}
-      <button onClick={percentage} className={opBtnClass} title="Percentage (%)">
+      <button onClick={percentage} className={opBtnClass} title="Persentase (%)">
         %
       </button>
-      <button onClick={clearEntry} className={opBtnClass} title="Clear Entry (Esc)">
+      <button onClick={clearEntry} className={opBtnClass} title="Bersihkan Entri (Esc)">
         CE
       </button>
-      <button onClick={clearAll} className={opBtnClass} title="Clear All (Del)">
+      <button onClick={clearAll} className={opBtnClass} title="Bersihkan Semua (Del)">
         C
       </button>
-      <button onClick={backspace} className={opBtnClass} title="Backspace">
+      <button onClick={backspace} className={opBtnClass} title="Hapus Terakhir (Backspace)">
         <Delete className="w-5 h-5 text-white/80" />
       </button>
 
       {/* Row 1 */}
-      <button onClick={() => inputFunction('recip')} className={opBtnClass} title="Reciprocal (1/x)">
+      <button onClick={() => inputFunction('recip')} className={opBtnClass} title="Kebalikan (1/x)">
         1/x
       </button>
-      <button onClick={() => inputFunction('sqr')} className={opBtnClass} title="Square (x²)">
+      <button onClick={() => inputFunction('sqr')} className={opBtnClass} title="Kuadrat (x²)">
         x²
       </button>
-      <button onClick={() => inputFunction('sqrt')} className={opBtnClass} title="Square Root (√x)">
+      <button onClick={() => inputFunction('sqrt')} className={opBtnClass} title="Akar Kuadrat (√x)">
         √x
       </button>
-      <button onClick={() => inputOperator('÷')} className={opBtnClass} title="Divide (/)">
+      <button onClick={() => inputOperator('÷')} className={opBtnClass} title="Bagi (/)">
         ÷
       </button>
 
@@ -69,7 +69,7 @@ export const StandardKeypad: React.FC = () => {
       <button onClick={() => inputDigit('9')} className={numBtnClass}>
         9
       </button>
-      <button onClick={() => inputOperator('×')} className={opBtnClass} title="Multiply (*)">
+      <button onClick={() => inputOperator('×')} className={opBtnClass} title="Kali (*)">
         ×
       </button>
 
@@ -83,7 +83,7 @@ export const StandardKeypad: React.FC = () => {
       <button onClick={() => inputDigit('6')} className={numBtnClass}>
         6
       </button>
-      <button onClick={() => inputOperator('−')} className={opBtnClass} title="Subtract (-)">
+      <button onClick={() => inputOperator('−')} className={opBtnClass} title="Kurang (-)">
         −
       </button>
 
@@ -97,21 +97,21 @@ export const StandardKeypad: React.FC = () => {
       <button onClick={() => inputDigit('3')} className={numBtnClass}>
         3
       </button>
-      <button onClick={() => inputOperator('+')} className={opBtnClass} title="Add (+)">
+      <button onClick={() => inputOperator('+')} className={opBtnClass} title="Tambah (+)">
         +
       </button>
 
       {/* Row 5 */}
-      <button onClick={negate} className={opBtnClass} title="Positive/Negative (+/-)">
+      <button onClick={negate} className={opBtnClass} title="Positif/Negatif (+/-)">
         +/-
       </button>
       <button onClick={() => inputDigit('0')} className={numBtnClass}>
         0
       </button>
-      <button onClick={inputDecimal} className={numBtnClass} title="Decimal point">
+      <button onClick={inputDecimal} className={numBtnClass} title="Titik desimal">
         {decimalSeparator}
       </button>
-      <button onClick={calculate} className={accentBtnClass} title="Calculate (Enter)">
+      <button onClick={calculate} className={accentBtnClass} title="Hitung Hasil (Enter)">
         =
       </button>
     </div>

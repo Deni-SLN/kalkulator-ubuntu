@@ -69,7 +69,7 @@ export const HistoryPanel: React.FC = () => {
       <div className="p-3 border-b border-white/10 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Clock className="w-4 h-4 text-dsln-accent" />
-          <span className="font-semibold text-sm text-white">History</span>
+          <span className="font-semibold text-sm text-white">Riwayat</span>
           <span className="text-xs px-1.5 py-0.5 rounded bg-white/10 text-white/60">
             {filteredItems.length}
           </span>
@@ -80,7 +80,7 @@ export const HistoryPanel: React.FC = () => {
             className={`p-1.5 rounded transition ${
               filterFavorite ? 'bg-amber-400/20 text-amber-400' : 'text-white/60 hover:text-white'
             }`}
-            title="Filter Favorites"
+            title="Saring Favorit"
           >
             <Star className="w-4 h-4 fill-current" />
           </button>
@@ -88,7 +88,7 @@ export const HistoryPanel: React.FC = () => {
             <button
               onClick={clearHistory}
               className="p-1.5 rounded hover:bg-red-500/20 text-white/60 hover:text-red-400 transition"
-              title="Clear all history"
+              title="Bersihkan semua riwayat"
             >
               <Trash2 className="w-4 h-4" />
             </button>
@@ -96,6 +96,7 @@ export const HistoryPanel: React.FC = () => {
           <button
             onClick={() => setIsOpen(false)}
             className="p-1.5 rounded hover:bg-white/10 text-white/60 hover:text-white transition"
+            title="Tutup"
           >
             <X className="w-4 h-4" />
           </button>
@@ -110,7 +111,7 @@ export const HistoryPanel: React.FC = () => {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search calculations..."
+            placeholder="Cari riwayat perhitungan..."
             className="w-full pl-8 pr-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-xs text-white placeholder-white/40 focus:outline-none focus:border-dsln-accent"
           />
         </div>
@@ -121,7 +122,7 @@ export const HistoryPanel: React.FC = () => {
         {filteredItems.length === 0 ? (
           <div className="h-40 flex flex-col items-center justify-center text-center text-white/40 text-xs">
             <Clock className="w-8 h-8 mb-2 stroke-[1.5] opacity-50" />
-            <p>There's no history yet</p>
+            <p>Belum ada riwayat kalkulasi</p>
           </div>
         ) : (
           filteredItems.map((item) => (
@@ -135,7 +136,7 @@ export const HistoryPanel: React.FC = () => {
                   <button
                     onClick={() => toggleFavorite(item.id)}
                     className="p-1 rounded hover:bg-white/10"
-                    title={item.is_favorite ? 'Unstar' : 'Star'}
+                    title={item.is_favorite ? 'Hapus dari Favorit' : 'Bintang Favorit'}
                   >
                     <Star
                       className={`w-3 h-3 ${
@@ -146,7 +147,7 @@ export const HistoryPanel: React.FC = () => {
                   <button
                     onClick={() => handleCopy(item.id, item.result)}
                     className="p-1 rounded hover:bg-white/10"
-                    title="Copy result"
+                    title="Salin hasil"
                   >
                     {copiedId === item.id ? (
                       <Check className="w-3 h-3 text-green-400" />
@@ -157,7 +158,7 @@ export const HistoryPanel: React.FC = () => {
                   <button
                     onClick={() => deleteItem(item.id)}
                     className="p-1 rounded hover:bg-red-500/20 text-white/50 hover:text-red-400"
-                    title="Delete entry"
+                    title="Hapus riwayat ini"
                   >
                     <Trash2 className="w-3 h-3" />
                   </button>
@@ -173,7 +174,7 @@ export const HistoryPanel: React.FC = () => {
               <div
                 onClick={() => handleReuse(item.expression, item.result)}
                 className="text-lg font-semibold text-white tracking-tight cursor-pointer hover:text-dsln-accent transition flex items-center justify-end space-x-1"
-                title="Click to reuse"
+                title="Klik untuk gunakan kembali"
               >
                 <span>
                   = {formatNumber(item.result, settings.thousandsSeparator, settings.decimalPrecision, settings.numberFormat)}
