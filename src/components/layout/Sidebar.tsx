@@ -35,20 +35,28 @@ export const Sidebar: React.FC<SidebarProps> = ({
     onClose();
   };
 
-  const navItems = [
+  interface NavItem {
+    id: CalculatorMode;
+    label: string;
+    icon: React.ComponentType<{ className?: string }>;
+    disabled: boolean;
+    tag?: string;
+  }
+
+  const navItems: { category: string; items: NavItem[] }[] = [
     {
       category: 'CALCULATOR',
       items: [
-        { id: 'standard' as CalculatorMode, label: 'Standard', icon: Calculator, disabled: false },
-        { id: 'scientific' as CalculatorMode, label: 'Scientific', icon: FlaskConical, disabled: false },
-        { id: 'programmer' as CalculatorMode, label: 'Programmer', icon: Binary, disabled: true, tag: 'V1.2' },
+        { id: 'standard', label: 'Standard', icon: Calculator, disabled: false },
+        { id: 'scientific', label: 'Scientific', icon: FlaskConical, disabled: false },
+        { id: 'programmer', label: 'Programmer', icon: Binary, disabled: false },
       ],
     },
     {
       category: 'TOOLS',
       items: [
-        { id: 'financial' as CalculatorMode, label: 'Financial', icon: TrendingUp, disabled: true, tag: 'V1.3' },
-        { id: 'converter' as CalculatorMode, label: 'Converter', icon: ArrowLeftRight, disabled: true, tag: 'V1.4' },
+        { id: 'financial', label: 'Financial', icon: TrendingUp, disabled: false },
+        { id: 'converter', label: 'Converter', icon: ArrowLeftRight, disabled: false },
       ],
     },
   ];

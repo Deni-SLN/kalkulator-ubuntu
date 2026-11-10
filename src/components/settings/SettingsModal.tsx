@@ -113,6 +113,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
               >
                 <option value="standard" className="bg-[#1e2129]">Standard</option>
                 <option value="scientific" className="bg-[#1e2129]">Scientific</option>
+                <option value="programmer" className="bg-[#1e2129]">Programmer</option>
+                <option value="financial" className="bg-[#1e2129]">Financial</option>
+                <option value="converter" className="bg-[#1e2129]">Converter</option>
               </select>
             </div>
 

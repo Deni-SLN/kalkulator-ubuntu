@@ -4,6 +4,7 @@ import { useHistoryStore } from '@/stores/historyStore';
 
 export function useKeyboardShortcuts(onOpenSettings: () => void) {
   const {
+    mode,
     inputDigit,
     inputDecimal,
     inputOperator,
@@ -52,6 +53,11 @@ export function useKeyboardShortcuts(onOpenSettings: () => void) {
           onOpenSettings();
           return;
         }
+        return;
+      }
+
+      // Restrict standard calculator typing to standard & scientific modes
+      if (mode !== 'standard' && mode !== 'scientific') {
         return;
       }
 
@@ -133,6 +139,7 @@ export function useKeyboardShortcuts(onOpenSettings: () => void) {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [
+    mode,
     display,
     isHistoryOpen,
     inputDigit,

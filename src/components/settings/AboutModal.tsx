@@ -29,7 +29,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
 
           <div>
             <h3 className="font-bold text-lg text-white">DSLN Calculator</h3>
-            <p className="text-xs text-white/50">Version 1.0.0 (Production Core)</p>
+            <p className="text-xs text-white/50">Version 1.4.0 (Full Suite: Standard, Scientific, Programmer, Financial, Converter)</p>
           </div>
 
           <p className="text-xs text-white/70 leading-relaxed">

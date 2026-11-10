@@ -1,6 +1,6 @@
 [package]
 name = "dsln-calculator"
-version = "1.0.0"
+version = "1.4.0"
 description = "Modern Desktop Calculator for Ubuntu Linux"
 authors = ["DSLN"]
 edition = "2021"

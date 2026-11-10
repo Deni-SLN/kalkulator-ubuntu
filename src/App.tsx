@@ -5,6 +5,9 @@ import { Display } from '@/components/calculator/Display';
 import { MemoryBar } from '@/components/calculator/MemoryBar';
 import { StandardKeypad } from '@/components/calculator/StandardKeypad';
 import { ScientificKeypad } from '@/components/calculator/ScientificKeypad';
+import { ProgrammerView } from '@/modules/programmer/ProgrammerView';
+import { FinancialView } from '@/modules/financial/FinancialView';
+import { ConverterView } from '@/modules/converter/ConverterView';
 import { HistoryPanel } from '@/components/history/HistoryPanel';
 import { SettingsModal } from '@/components/settings/SettingsModal';
 import { AboutModal } from '@/components/settings/AboutModal';
@@ -51,16 +54,31 @@ export const App: React.FC = () => {
 
       {/* Main Body */}
       <main className="flex-1 flex flex-col justify-between overflow-hidden relative">
-        {/* Screen Display Area */}
-        <Display />
+        {mode === 'standard' && (
+          <>
+            <Display />
+            <MemoryBar />
+            <div className="flex-1 flex flex-col overflow-hidden">
+              <StandardKeypad />
+            </div>
+          </>
+        )}
 
-        {/* Memory Function Bar */}
-        <MemoryBar />
+        {mode === 'scientific' && (
+          <>
+            <Display />
+            <MemoryBar />
+            <div className="flex-1 flex flex-col overflow-hidden">
+              <ScientificKeypad />
+            </div>
+          </>
+        )}
 
-        {/* Keypad Area based on Active Mode */}
-        <div className="flex-1 flex flex-col overflow-hidden">
-          {mode === 'scientific' ? <ScientificKeypad /> : <StandardKeypad />}
-        </div>
+        {mode === 'programmer' && <ProgrammerView />}
+
+        {mode === 'financial' && <FinancialView />}
+
+        {mode === 'converter' && <ConverterView />}
       </main>
 
       {/* Sidebar Navigation Drawer */}
